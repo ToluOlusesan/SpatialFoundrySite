@@ -62,7 +62,7 @@ export function Navbar() {
       {/* Floating pill navbar */}
       <div className="fixed left-1/2 top-5 z-50 w-[calc(100%-48px)] max-w-[1100px] -translate-x-1/2">
         <nav
-          className="flex items-center justify-between gap-4 rounded-full border border-fg/10 px-4 py-2.5 md:px-5"
+          className="relative flex items-center justify-between gap-4 rounded-full border border-fg/10 px-4 py-2.5 md:px-5"
           style={{
             backdropFilter:       "blur(16px) saturate(140%)",
             WebkitBackdropFilter: "blur(16px) saturate(140%)",
@@ -84,8 +84,8 @@ export function Navbar() {
             />
           </Link>
 
-          {/* Center: nav links — hidden on mobile */}
-          <div className="hidden items-center gap-1 md:flex">
+          {/* Center: nav links — absolutely centered so logo width ≠ buttons width doesn't skew it */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
