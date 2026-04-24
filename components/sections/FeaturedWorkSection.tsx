@@ -66,26 +66,25 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
           </motion.div>
         )}
 
-        {/* Hover arrow — inverts: fg circle, bg icon */}
+        {/* Hover arrow */}
         <div className="absolute right-4 top-4 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-fg text-bg">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black">
             <ArrowUpRight size={14} />
           </div>
         </div>
 
-
-        {/* Hover scrim darkening */}
+        {/* Hover scrim — always darkens so white text is readable in both themes */}
         <div className="absolute inset-0 z-[5] transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-             style={{ backgroundColor: "rgb(var(--bg) / 0.15)" }} />
+             style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)" }} />
 
         {/* Label — bottom-left, visible on hover */}
         <div className="absolute bottom-0 left-0 right-0 z-20 p-6 opacity-0 translate-y-2 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-y-0">
-          <p className="font-display mb-1 text-3xl font-bold leading-tight text-fg" style={{ letterSpacing: "-0.02em" }}>
+          <p className="font-display mb-1 text-3xl font-bold leading-tight text-white" style={{ letterSpacing: "-0.02em" }}>
             {label}
           </p>
           <div className="flex items-end justify-between gap-4">
-            <p className="font-body text-sm text-fg">{sub}</p>
-            <span className="shrink-0 font-body text-[10px] text-fg">{tags}</span>
+            <p className="font-body text-sm text-white/80">{sub}</p>
+            <span className="shrink-0 font-body text-[10px] text-white/60">{tags}</span>
           </div>
         </div>
       </motion.article>
