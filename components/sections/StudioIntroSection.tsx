@@ -40,9 +40,6 @@ export function StudioIntroSection() {
           {/* Right: subheading + body — narrower column, vertically centered */}
           <div className="md:col-span-5 flex flex-col justify-center gap-6">
             <RevealOnScroll delay={0.12}>
-  
-            </RevealOnScroll>
-            <RevealOnScroll delay={0.18}>
               <p className="font-body text-base text-fg" style={{ lineHeight: 1.7 }}>
                 Spatial Foundry is a 3D branding studio built around a single
                 conviction: that the most compelling identities aren&apos;t flat.
