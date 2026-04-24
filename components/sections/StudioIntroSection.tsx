@@ -26,7 +26,7 @@ export function StudioIntroSection() {
                 lineHeight:    1.05,
               }}
             >
-              We're Spatial Foundry.
+              We&apos;re Spatial Foundry.
             </h2>
             <Link
               href="/about"
