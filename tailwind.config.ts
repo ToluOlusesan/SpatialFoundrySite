@@ -30,11 +30,16 @@ const config: Config = {
       animation: {
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         "scroll-dot": "scrollDot 1.8s ease-in-out infinite",
+        "marquee":    "marquee 38s linear infinite",
       },
       keyframes: {
         scrollDot: {
           "0%, 100%": { transform: "translateY(0)",    opacity: "1" },
           "50%":      { transform: "translateY(16px)", opacity: "0.2" },
+        },
+        marquee: {
+          "0%":   { transform: "translateX(0%)"   },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

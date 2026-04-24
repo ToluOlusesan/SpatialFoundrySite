@@ -56,7 +56,7 @@ export default function ContactPage() {
             {/* Left: contact info */}
             <div className="lg:col-span-4">
               <RevealOnScroll>
-                <a href="mailto:hello@spatialfoundry.com" className="group mb-12 block">
+                <a href="mailto:spatialfoundry@gmail.com" className="group mb-12 block">
                   <span className="eyebrow mb-3 block">Email</span>
                   <span
                     className="font-display font-bold text-fg transition-opacity duration-200 group-hover:opacity-60"
@@ -65,7 +65,7 @@ export default function ContactPage() {
                       letterSpacing: "-0.01em",
                     }}
                   >
-                    hello@spatialfoundry.com
+                    spatialfoundry@gmail.com
                   </span>
                 </a>
               </RevealOnScroll>

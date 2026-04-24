@@ -67,7 +67,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <p className="text-center font-body text-xs font-medium uppercase tracking-widest text-fg">
+        <p className="text-center font-body text-sm font-medium uppercase tracking-widest text-fg">
           Spatial Foundry © {new Date().getFullYear()}. All Rights Reserved.
         </p>
       </div>

@@ -6,29 +6,24 @@ import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 
 const steps = [
   {
-    number: "01",
-    title:  "Discovery & Brief",
-    body:   "We learn your brand from the inside out: what it stands for, who it's for, and what problem the 3D work needs to solve.",
+    title: "Discovery & Brief",
+    body:  "We learn your brand from the inside out: what it stands for, who it's for, and what problem the 3D work needs to solve.",
   },
   {
-    number: "02",
-    title:  "Concept & Art Direction",
-    body:   "Moodboards, material studies, and initial form explorations. We define the visual logic before touching a single vertex.",
+    title: "Concept & Art Direction",
+    body:  "Moodboards, material studies, and initial form explorations. We define the visual logic before touching a single vertex.",
   },
   {
-    number: "03",
-    title:  "3D Design & Rendering",
-    body:   "The build phase. Assets are modelled, lit, and rendered with obsessive attention to material quality, lighting, and compositional precision.",
+    title: "3D Design & Rendering",
+    body:  "The build phase. Assets are modelled, lit, and rendered with obsessive attention to material quality, lighting, and compositional precision.",
   },
   {
-    number: "04",
-    title:  "Motion & Animation",
-    body:   "Static assets are animated into launch films, loop sequences, and UI-ready motion assets.",
+    title: "Motion & Animation",
+    body:  "Static assets are animated into launch films, loop sequences, and UI-ready motion assets.",
   },
   {
-    number: "05",
-    title:  "Delivery & Handoff",
-    body:   "Final files packaged cleanly: renders at every required resolution, animation exports, Figma-ready assets, and a usage guide.",
+    title: "Delivery & Handoff",
+    body:  "Final files packaged cleanly: renders at every required resolution, animation exports, Figma-ready assets, and a usage guide.",
   },
 ];
 
@@ -38,14 +33,16 @@ export function ProcessSection() {
   return (
     <section className="py-16 md:py-20 lg:py-[120px]">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+
         {/* Header */}
         <RevealOnScroll className="mb-6">
           <h2
             className="font-display font-bold text-fg"
             style={{
-              fontSize:      "clamp(1.75rem, 3vw, 2.75rem)",
-              letterSpacing: "-0.015em",
-              lineHeight:    1.15,
+              fontSize:      "clamp(1.75rem, 3.5vw, 3.25rem)",
+              letterSpacing: "-0.02em",
+              lineHeight:    1.1,
+              maxWidth:      "14ch",
             }}
           >
             From Brief to Final Render
@@ -54,59 +51,55 @@ export function ProcessSection() {
 
         <RevealOnScroll delay={0.08}>
           <p
-            className="mb-16 font-body text-base leading-relaxed text-fg"
-            style={{ maxWidth: "65ch", lineHeight: 1.65 }}
+            className="mb-14 font-body text-base text-fg/60"
+            style={{ maxWidth: "55ch", lineHeight: 1.65 }}
           >
-            We run a tight, collaborative process. No black boxes, no guesswork
-            — just a clear path from your brief to deliverables that ship.
+            No black boxes, no guesswork — just a clear path from your brief to
+            deliverables that ship.
           </p>
         </RevealOnScroll>
 
-        {/* Steps */}
+        {/* Accordion */}
         <div className="flex flex-col">
           {steps.map((step, i) => {
             const isActive = activeStep === i;
             return (
-              <RevealOnScroll key={step.number} delay={i * 0.06}>
-                <button
-                  onClick={() => setActiveStep(isActive ? null : i)}
-                  aria-expanded={isActive}
-                  className="group w-full border-t border-fg/10 py-6 text-left last:border-b last:border-b-fg/10"
-                >
-                  <div className="flex items-center justify-between gap-6">
-                    <div className="flex items-center gap-8">
-                      <span
-                        className={`w-8 shrink-0 font-body text-xs font-medium tracking-widest transition-colors duration-200 ${
-                          isActive ? "text-fg" : "text-fg"
-                        }`}
-                      >
-                        {step.number}
-                      </span>
-                      <span
-                        className={`font-display font-bold leading-tight transition-colors duration-200 ${
-                          isActive ? "text-fg" : "text-fg group-hover:text-fg"
-                        }`}
-                        style={{
-                          fontSize:      "clamp(1.25rem, 2.5vw, 2rem)",
-                          letterSpacing: "-0.015em",
-                        }}
-                      >
-                        {step.title}
-                      </span>
-                    </div>
-
+              <RevealOnScroll key={step.title} delay={i * 0.05}>
+                <div className="border-t border-fg/10 last:border-b last:border-fg/10">
+                  <button
+                    onClick={() => setActiveStep(isActive ? null : i)}
+                    aria-expanded={isActive}
+                    className="group flex w-full items-center justify-between gap-6 py-6 text-left"
+                  >
                     <span
-                      className={`shrink-0 font-body text-lg font-medium transition-all duration-300 ${
-                        isActive ? "text-fg" : "text-fg"
+                      className={`font-display font-bold leading-tight transition-all duration-300 ${
+                        isActive ? "text-fg" : "text-fg/40 group-hover:text-fg/70"
                       }`}
                       style={{
-                        transform: isActive ? "rotate(45deg)" : "rotate(0deg)",
-                        display:   "inline-block",
+                        fontSize:      "clamp(1.2rem, 2vw, 1.75rem)",
+                        letterSpacing: "-0.015em",
                       }}
                     >
-                      +
+                      {step.title}
                     </span>
-                  </div>
+
+                    {/* Circle toggle */}
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                        isActive
+                          ? "border-fg bg-fg text-bg"
+                          : "border-fg/15 text-fg/40 group-hover:border-fg/30 group-hover:text-fg/70"
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <span
+                        className="font-body text-lg font-medium leading-none transition-transform duration-300"
+                        style={{ transform: isActive ? "rotate(45deg)" : "rotate(0deg)", display: "inline-block" }}
+                      >
+                        +
+                      </span>
+                    </span>
+                  </button>
 
                   <AnimatePresence mode="wait">
                     {isActive && (
@@ -118,19 +111,20 @@ export function ProcessSection() {
                         className="overflow-hidden"
                       >
                         <p
-                          className="pl-16 pt-4 font-body text-base text-fg"
-                          style={{ maxWidth: "65ch", lineHeight: 1.65 }}
+                          className="pb-7 font-body text-base text-fg/70"
+                          style={{ maxWidth: "60ch", lineHeight: 1.7 }}
                         >
                           {step.body}
                         </p>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </button>
+                </div>
               </RevealOnScroll>
             );
           })}
         </div>
+
       </div>
     </section>
   );

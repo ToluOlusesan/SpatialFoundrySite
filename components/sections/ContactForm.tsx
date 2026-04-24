@@ -47,7 +47,7 @@ export function ContactForm() {
       `\nMessage:\n${form.message}`,
     ].join("\n");
 
-    window.location.href = `mailto:hello@spatialfoundry.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:spatialfoundry@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 

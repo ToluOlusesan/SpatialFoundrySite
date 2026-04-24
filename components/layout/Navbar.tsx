@@ -92,7 +92,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-1.5 font-body text-xs font-medium tracking-wide transition-colors duration-200 ${
+                  className={`relative px-4 py-1.5 font-body text-sm font-medium tracking-wide transition-colors duration-200 ${
                     isActive ? "text-fg" : "text-fg hover:text-fg"
                   }`}
                 >
@@ -114,7 +114,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="hidden rounded-full border border-fg/15 px-4 py-1.5 font-body text-xs font-medium tracking-wide text-fg transition-all duration-300 hover:border-fg hover:bg-fg hover:text-bg sm:inline-flex"
+              className="hidden rounded-full border border-fg/15 px-4 py-1.5 font-body text-sm font-medium tracking-wide text-fg transition-all duration-300 hover:border-fg hover:bg-fg hover:text-bg sm:inline-flex"
             >
               Contact
             </Link>
@@ -123,7 +123,7 @@ export function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
-              className="flex items-center gap-2 rounded-full border border-fg/15 px-4 py-1.5 font-body text-xs font-medium tracking-wide text-fg transition-all duration-200 hover:border-fg/35"
+              className="flex items-center gap-2 rounded-full border border-fg/15 px-4 py-1.5 font-body text-sm font-medium tracking-wide text-fg transition-all duration-200 hover:border-fg/35"
             >
               Menu
               <span
@@ -173,7 +173,7 @@ export function Navbar() {
                       className="group flex items-baseline gap-5 border-b border-fg/8 py-7 last:border-b-0"
                     >
                       <span
-                        className="font-body text-xs font-medium tracking-widest text-fg"
+                        className="font-body text-sm font-medium tracking-widest text-fg"
                         style={{ minWidth: "2rem" }}
                       >
                         0{i + 1}

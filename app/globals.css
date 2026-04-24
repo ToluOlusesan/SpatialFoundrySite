@@ -34,7 +34,8 @@ body {
   background-color: rgb(var(--bg));
   color:            rgb(var(--fg));
   font-family: var(--font-work-sans), sans-serif;
-  font-size: 1.0625rem; /* 17px base — scales all rem-based type up */
+  font-size: 1.25rem; /* 20px base — scales all rem-based type up */
+  font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap: break-word;
