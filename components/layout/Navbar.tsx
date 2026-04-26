@@ -5,8 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
-
 // Inline SVG brand icons (lucide-react does not ship these)
 function InstagramIcon({ size = 14 }: { size?: number }) {
   return (
@@ -79,7 +77,7 @@ export function Navbar() {
               alt="Spatial Foundry"
               width={140}
               height={28}
-              className="h-6 w-auto object-contain invert dark:invert-0"
+              className="h-6 w-auto object-contain invert"
               priority
             />
           </Link>
@@ -108,10 +106,8 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right: theme toggle + menu */}
+          {/* Right: contact + menu */}
           <div className="flex shrink-0 items-center gap-2">
-            <ThemeToggle />
-
             <Link
               href="/contact"
               className="hidden rounded-full border border-fg/15 px-4 py-1.5 font-body text-sm font-medium tracking-wide text-fg transition-all duration-300 hover:border-fg hover:bg-fg hover:text-bg sm:inline-flex"
@@ -142,10 +138,10 @@ export function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{    opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{    opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeInOut" }}
             className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-12 pt-28 md:px-12 lg:px-16"
           >
             {/* Close */}
@@ -164,9 +160,9 @@ export function Navbar() {
                 return (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.15 + i * 0.06, duration: 0.4, ease: "easeOut" }}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + i * 0.07, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Link
                       href={link.href}
@@ -178,16 +174,20 @@ export function Navbar() {
                       >
                         0{i + 1}
                       </span>
-                      <span
-                        className={`font-display font-bold leading-none transition-opacity duration-200 ${
-                          isActive ? "text-fg" : "text-fg group-hover:text-fg"
-                        }`}
-                        style={{
-                          fontSize:      "clamp(2.5rem, 8vw, 6rem)",
-                          letterSpacing: "-0.03em",
-                        }}
-                      >
-                        {link.label}
+                      <span className="relative inline-block">
+                        <span
+                          className="font-display font-bold leading-none text-fg"
+                          style={{
+                            fontSize:      "clamp(2.5rem, 8vw, 6rem)",
+                            letterSpacing: "-0.03em",
+                          }}
+                        >
+                          {link.label}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="absolute bottom-1 left-0 h-[2px] w-0 bg-fg transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full"
+                        />
                       </span>
                       {isActive && (
                         <span

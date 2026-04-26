@@ -42,7 +42,7 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
         whileHover={{ scale: 1.005 }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         className="relative overflow-hidden rounded-2xl bg-surface"
-        style={{ aspectRatio: "16/9" }}
+        style={{ aspectRatio: "4/3" }}
       >
 
 
@@ -94,31 +94,8 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
 
 export function FeaturedWorkSection() {
   return (
-    <section className="pt-8 pb-16 md:pt-10 md:pb-20 lg:pt-14 lg:pb-[72px]">
+    <section className="pb-16 pt-10 md:pb-20 md:pt-12 lg:pb-[72px] lg:pt-16">
       <div className="mx-auto max-w-[1280px] px-6 md:px-12">
-        {/* Section header */}
-        <RevealOnScroll className="mb-10 flex items-end justify-between">
-          <div>
-            <h2
-              className="font-display font-bold text-fg"
-              style={{
-                fontSize:      "clamp(2.5rem, 5vw, 3.5rem)",
-                letterSpacing: "-0.025em",
-                lineHeight:    1.05,
-              }}
-            >
-              Recent Work.
-            </h2>
-          </div>
-          <Link
-            href="/projects"
-            className="group hidden items-center gap-1.5 font-body text-base text-fg/60 transition-colors duration-200 hover:text-fg md:inline-flex"
-          >
-            View all work
-            <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </RevealOnScroll>
-
         {/* 2-column grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {featuredProjects.map((project, i) => (
@@ -127,6 +104,17 @@ export function FeaturedWorkSection() {
             </RevealOnScroll>
           ))}
         </div>
+
+        {/* View all work — bottom right */}
+        <RevealOnScroll className="mt-8 flex justify-end">
+          <Link
+            href="/projects"
+            className="group inline-flex items-center gap-1.5 font-body text-base text-fg/60 transition-colors duration-200 hover:text-fg"
+          >
+            View all work
+            <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </Link>
+        </RevealOnScroll>
       </div>
     </section>
   );

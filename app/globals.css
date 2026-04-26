@@ -16,19 +16,11 @@
   --line:    229 229 229;
   --surface: 247 247 247;
 }
-.dark {
-  --bg:       10  10  10;
-  --fg:      255 255 255;
-  --muted:   160 160 160;
-  --line:     38  38  38;
-  --surface:  18  18  18;
-}
 
 html {
   scroll-behavior: smooth;
   color-scheme: light;
 }
-html.dark { color-scheme: dark; }
 
 body {
   background-color: rgb(var(--bg));
@@ -39,7 +31,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap: break-word;
-  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 /* Selection — inverted fg / bg, same feel in both themes */

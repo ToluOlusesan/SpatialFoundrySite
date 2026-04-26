@@ -3,7 +3,6 @@ import { Outfit, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const outfit = Outfit({
   subsets:  ["latin"],
@@ -29,10 +28,6 @@ export const metadata: Metadata = {
   },
 };
 
-// No-flash script: runs before React paints. Dark is the default for
-// first-time visitors; a saved "light" preference overrides.
-const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,14 +38,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/32x32/favicon-orange.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/16x16/favicon-orange.png" />
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="bg-bg text-fg font-body antialiased overflow-x-hidden">
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

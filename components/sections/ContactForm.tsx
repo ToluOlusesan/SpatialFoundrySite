@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 
 const projectTypes = [
   "3D Brand Identity",
@@ -28,6 +28,18 @@ export function ContactForm() {
     message:     "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -62,15 +74,6 @@ export function ContactForm() {
 
   const labelClass = "mb-2 block font-body text-xs font-medium uppercase tracking-widest text-fg";
 
-  // Inline SVG chevron rendered with currentColor — looks right in both themes without a data URI
-  const chevronDataUri =
-    "data:image/svg+xml;utf8," +
-    encodeURIComponent(
-      `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'>` +
-      `<path d='M1 1l5 5 5-5' stroke='currentColor' stroke-width='1.5' fill='none' stroke-linecap='round'/>` +
-      `</svg>`
-    );
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -104,25 +107,50 @@ export function ContactForm() {
         />
       </div>
 
-      <div>
-        <label htmlFor="projectType" className={labelClass}>Project Type</label>
-        <select
-          id="projectType" name="projectType"
-          value={form.projectType} onChange={handleChange}
-          className={`${fieldClass} appearance-none text-fg`}
-          style={{
-            backgroundImage:    `url("${chevronDataUri}")`,
-            backgroundRepeat:   "no-repeat",
-            backgroundPosition: "right 16px center",
-          }}
+      <div ref={dropdownRef} className="relative">
+        <label className={labelClass}>Project Type</label>
+        <button
+          type="button"
+          onClick={() => setDropdownOpen((o) => !o)}
+          className={[
+            "w-full rounded-xl border px-4 py-3.5 font-body text-sm text-left",
+            "flex items-center justify-between gap-2",
+            "outline-none transition-all duration-200",
+            dropdownOpen
+              ? "border-fg/40 bg-fg/[0.04]"
+              : "border-fg/10 bg-fg/[0.02] hover:border-fg/20",
+            form.projectType ? "text-fg" : "text-fg/30",
+          ].join(" ")}
         >
-          <option value="" disabled>Select a project type</option>
-          {projectTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
-            </option>
-          ))}
-        </select>
+          <span>{form.projectType || "Select a project type"}</span>
+          <ChevronDown
+            size={14}
+            className={`shrink-0 text-fg/40 transition-transform duration-200 ${dropdownOpen ? "rotate-180" : ""}`}
+          />
+        </button>
+
+        {dropdownOpen && (
+          <div className="absolute left-0 right-0 top-full z-50 mt-1.5 overflow-hidden rounded-xl border border-fg/10 bg-bg shadow-lg">
+            {projectTypes.map((type, i) => (
+              <button
+                key={type}
+                type="button"
+                onClick={() => {
+                  setForm((prev) => ({ ...prev, projectType: type }));
+                  setDropdownOpen(false);
+                }}
+                className={[
+                  "w-full px-4 py-3 text-left font-body text-sm transition-colors duration-150",
+                  "hover:bg-fg/[0.05]",
+                  form.projectType === type ? "text-fg font-medium" : "text-fg/70",
+                  i !== 0 ? "border-t border-fg/[0.06]" : "",
+                ].join(" ")}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div>
