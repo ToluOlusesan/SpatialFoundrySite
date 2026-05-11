@@ -30,7 +30,7 @@ export function StudioIntroSection() {
             </h2>
             <Link
               href="/about"
-              className="group self-start inline-flex items-center gap-2 rounded-full border border-fg/15 px-7 py-3.5 font-body text-[0.875rem] font-medium uppercase tracking-[0.12em] text-fg transition-all duration-[350ms] hover:border-fg/25 hover:bg-surface focus-visible:outline-2 focus-visible:outline-accent"
+              className="group self-start inline-flex items-center gap-2 rounded-full bg-fg px-7 py-3.5 font-body text-[0.875rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
             >
               More About the Studio
               <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

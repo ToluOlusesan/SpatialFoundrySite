@@ -6,27 +6,58 @@ import { motion } from "framer-motion";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import Image from "next/image";
 
-interface ProjectCard {
+interface Project {
   slug:   string;
   label:  string;
   sub:    string;
   tags:   string;
-  render: string;
   image?: string;
 }
 
-const featuredProjects: ProjectCard[] = [
+const featuredProjects: Project[] = [
   {
     slug:   "meshkit",
     label:  "MeshKit",
     sub:    "3D Icon Library & Identity",
     tags:   "Identity · Icons · Motion",
-    render: "[ MeshKit — Hero Render ]",
     image:  "/images/meshkit.png",
   },
 ];
 
-function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
+function IntroCard() {
+  return (
+    <article
+      className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface p-8 md:p-10"
+      style={{ aspectRatio: "16/9" }}
+    >
+      <div>
+        <h3
+          className="font-display font-bold text-fg"
+          style={{
+            fontSize:      "clamp(1.75rem, 3.4vw, 3rem)",
+            letterSpacing: "-0.025em",
+            lineHeight:    1.0,
+          }}
+        >
+          Selected<br />Work
+        </h3>
+        <p className="mt-5 max-w-[34ch] font-body text-fg/65" style={{ lineHeight: 1.6 }}>
+          A curated set of recent identity systems, motion films, and brand objects we&apos;ve built.
+        </p>
+      </div>
+
+      <Link
+        href="/projects"
+        className="group inline-flex w-fit items-center gap-2 rounded-full bg-fg px-6 py-3 font-body text-[0.8125rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      >
+        Discover More
+        <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+      </Link>
+    </article>
+  );
+}
+
+function ProjectCard({ slug, label, sub, tags, image }: Project) {
   return (
     <Link href={`/projects/${slug}`} className="group block">
       <motion.article
@@ -35,7 +66,7 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
         className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
         style={{ aspectRatio: "16/9" }}
       >
-        {image ? (
+        {image && (
           <Image
             src={image}
             alt={label}
@@ -44,33 +75,23 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
           />
-        ) : (
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{ opacity: [0.25, 0.5, 0.25] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <span className="font-body text-[10px] uppercase tracking-[0.2em] text-fg">
-              {render}
-            </span>
-          </motion.div>
         )}
 
-        {/* Hover arrow — white circle, top-right */}
+        {/* Hover arrow — solid white circle, top-right */}
         <div className="absolute right-4 top-4 z-20 opacity-0 transition-all duration-300 group-hover:opacity-100">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-sm">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-md">
             <ArrowUpRight size={14} />
           </div>
         </div>
 
-        {/* Dark gradient scrim — fades in on hover */}
+        {/* Dark scrim — fades in on hover */}
         <div
           aria-hidden="true"
           className="absolute inset-0 z-[5] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)" }}
         />
 
-        {/* Bottom label — slides up on hover */}
+        {/* Label slides in on hover */}
         <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-2 p-6 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
           <p
             className="font-display mb-1 font-bold leading-tight text-white"
@@ -79,8 +100,8 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
             {label}
           </p>
           <div className="flex items-end justify-between gap-4">
-            <p className="font-body text-sm text-white/80">{sub}</p>
-            <span className="shrink-0 font-body text-[10px] uppercase tracking-[0.12em] text-white/55">{tags}</span>
+            <p className="font-body text-sm text-white/85">{sub}</p>
+            <span className="shrink-0 font-body text-[10px] uppercase tracking-[0.12em] text-white/60">{tags}</span>
           </div>
         </div>
       </motion.article>
@@ -93,25 +114,19 @@ export function FeaturedWorkSection() {
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
 
-        {/* 2-column grid */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+          <RevealOnScroll>
+            <IntroCard />
+          </RevealOnScroll>
+
           {featuredProjects.map((project, i) => (
-            <RevealOnScroll key={project.slug} delay={i * 0.1}>
+            <RevealOnScroll key={project.slug} delay={0.08 + i * 0.08}>
               <ProjectCard {...project} />
             </RevealOnScroll>
           ))}
-        </div>
 
-        {/* View all work — bottom right */}
-        <RevealOnScroll delay={0.2} className="mt-8 flex justify-end">
-          <Link
-            href="/projects"
-            className="group link-underline inline-flex items-center gap-1.5 font-body text-sm text-fg/55 transition-colors duration-200 hover:text-fg"
-          >
-            View all work
-            <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
-        </RevealOnScroll>
+        </div>
 
       </div>
     </section>

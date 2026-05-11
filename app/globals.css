@@ -7,12 +7,12 @@
    RGB triplets so Tailwind alpha modifiers (rgb(var(--fg) / 0.6)) work.
    ========================================================================= */
 :root {
-  --bg:         13  13  13;   /* #0d0d0d — requested */
-  --fg:        237 234 228;   /* #ededea — warm off-white */
+  --bg:         13  13  13;   /* #0d0d0d — site background */
+  --fg:        255 255 255;   /* #ffffff — pure white for legibility */
   --surface:    23  22  21;   /* #171615 — first elevation */
   --surface-2:  33  32  30;   /* #21201e — second elevation */
-  --accent:    200  82  26;   /* #c8521a — brand burnt orange */
-  --line:      237 234 228;   /* alias: use with /alpha for hairlines */
+  --accent:    255  43   0;   /* #ff2b00 — brand orange (from wordmark.svg) */
+  --line:      255 255 255;   /* alias: use with /alpha for hairlines */
 }
 
 html {
