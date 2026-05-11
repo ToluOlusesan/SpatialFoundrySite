@@ -31,8 +31,8 @@ export function CTASection() {
 
         <RevealOnScroll delay={0.14}>
           <p
-            className="mx-auto mb-12 font-body text-fg/60"
-            style={{ maxWidth: "40ch", lineHeight: 1.65 }}
+            className="mx-auto mb-12 font-body text-fg/80"
+            style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)", maxWidth: "40ch", lineHeight: 1.7 }}
           >
             Let&apos;s talk about what you&apos;re building.
           </p>
@@ -41,10 +41,10 @@ export function CTASection() {
         <RevealOnScroll delay={0.2}>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 rounded-full border border-fg/15 px-8 py-3.5 font-body text-[0.875rem] font-medium uppercase tracking-[0.12em] text-fg transition-all duration-[350ms] hover:border-fg/25 hover:bg-surface focus-visible:outline-2 focus-visible:outline-accent"
+            className="inline-flex items-center gap-3 rounded-full bg-fg px-8 py-4 font-body text-[0.9375rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
           >
             Start a Project
-            <ArrowRight size={13} />
+            <ArrowRight size={14} />
           </Link>
         </RevealOnScroll>
 

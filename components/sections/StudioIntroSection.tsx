@@ -21,12 +21,12 @@ export function StudioIntroSection() {
             <h2
               className="font-display font-bold text-fg"
               style={{
-                fontSize:      "clamp(2.25rem, 5vw, 4.5rem)",
+                fontSize:      "clamp(2.5rem, 5.4vw, 5rem)",
                 letterSpacing: "-0.025em",
-                lineHeight:    1.05,
+                lineHeight:    1.02,
               }}
             >
-              We&apos;re Spatial Foundry.
+              We&apos;re<br />Spatial Foundry.
             </h2>
             <Link
               href="/about"
@@ -41,8 +41,8 @@ export function StudioIntroSection() {
           <div className="flex flex-col justify-center md:col-span-5">
             <RevealOnScroll delay={0.12}>
               <p
-                className="font-body text-fg/70"
-                style={{ lineHeight: 1.7, maxWidth: "50ch" }}
+                className="font-body text-fg/85"
+                style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)", lineHeight: 1.7, maxWidth: "50ch" }}
               >
                 Spatial Foundry is a 3D branding studio built around a single
                 conviction: that the most compelling identities aren&apos;t flat.

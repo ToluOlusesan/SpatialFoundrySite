@@ -10,7 +10,7 @@ export function Marquee({ items }: MarqueeProps) {
   const track = [...items, ...items];
 
   return (
-    <div className="group relative overflow-hidden border-y border-fg/10 py-8 md:py-10 lg:py-12">
+    <div className="group relative overflow-hidden border-y border-line py-8 md:py-10 lg:py-12">
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
         {track.map((item, i) => (
           <span

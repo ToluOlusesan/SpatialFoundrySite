@@ -58,12 +58,12 @@ export function HeroSection() {
             >
               <Link
                 href="/contact"
-                className="group flex items-center gap-2 rounded-full border border-white/[0.18] bg-white/[0.06] px-4 py-2 backdrop-blur-md transition-all duration-300 hover:border-white/40 hover:bg-white/[0.14]"
+                className="group flex items-center gap-2 rounded-full border border-white/[0.22] bg-white/[0.08] px-5 py-2.5 backdrop-blur-md transition-all duration-300 hover:border-white/45 hover:bg-white/[0.16]"
               >
-                <span className="font-body text-[11px] font-medium uppercase tracking-widest text-white/75 transition-colors group-hover:text-white">
+                <span className="font-body text-[12px] font-medium uppercase tracking-widest text-white/85 transition-colors group-hover:text-white">
                   Start a Project
                 </span>
-                <ArrowUpRight size={11} className="text-white/55 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight size={12} className="text-white/65 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </motion.div>
 
@@ -83,7 +83,7 @@ export function HeroSection() {
                 className="w-auto object-contain"
                 style={{ height: "clamp(44px, 7vw, 110px)" }}
               />
-              <span className="font-body text-[10px] font-medium uppercase tracking-[0.28em] text-white/60">
+              <span className="font-body text-[12px] font-medium uppercase tracking-[0.28em] text-white/75">
                 Est. 2026
               </span>
             </motion.div>
@@ -97,7 +97,7 @@ export function HeroSection() {
             transition={{ delay: 0.55, duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="ml-auto mt-auto max-w-[24ch] text-right font-display font-bold text-white"
             style={{
-              fontSize:      "clamp(1.125rem, 1.95vw, 1.95rem)",
+              fontSize:      "clamp(1.375rem, 2.4vw, 2.5rem)",
               letterSpacing: "-0.015em",
               lineHeight:    1.15,
             }}

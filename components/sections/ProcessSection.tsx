@@ -55,8 +55,8 @@ export function ProcessSection() {
 
         <RevealOnScroll delay={0.1}>
           <p
-            className="mb-16 font-body text-fg/60"
-            style={{ maxWidth: "55ch", lineHeight: 1.65 }}
+            className="mb-16 font-body text-fg/80"
+            style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)", maxWidth: "55ch", lineHeight: 1.7 }}
           >
             No black boxes, no guesswork — just a clear path from your brief to
             deliverables that ship.
@@ -69,7 +69,7 @@ export function ProcessSection() {
             const isActive = activeStep === i;
             return (
               <RevealOnScroll key={step.title} delay={i * 0.05}>
-                <div className="border-t border-fg/10 last:border-b last:border-fg/10">
+                <div className="border-t border-line last:border-b last:border-line">
                   <button
                     onClick={() => setActiveStep(isActive ? null : i)}
                     aria-expanded={isActive}
@@ -78,10 +78,10 @@ export function ProcessSection() {
                     <span
                       className={[
                         "font-display font-bold leading-tight transition-colors duration-200",
-                        isActive ? "text-fg" : "text-fg/40 group-hover:text-accent",
+                        isActive ? "text-fg" : "text-fg/65 group-hover:text-accent",
                       ].join(" ")}
                       style={{
-                        fontSize:      "clamp(1.2rem, 2vw, 1.75rem)",
+                        fontSize:      "clamp(1.375rem, 2.2vw, 1.875rem)",
                         letterSpacing: "-0.015em",
                       }}
                     >
@@ -91,11 +91,11 @@ export function ProcessSection() {
                     {/* Circle toggle */}
                     <span
                       className={[
-                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border",
+                        "flex h-11 w-11 shrink-0 items-center justify-center rounded-full border",
                         "transition-all duration-300",
                         isActive
                           ? "border-fg bg-fg text-bg"
-                          : "border-fg/15 text-fg/40 group-hover:border-fg/30 group-hover:text-fg/70",
+                          : "border-line text-fg/65 group-hover:border-fg/35 group-hover:text-fg/90",
                       ].join(" ")}
                       aria-hidden="true"
                     >
@@ -118,8 +118,8 @@ export function ProcessSection() {
                         className="overflow-hidden"
                       >
                         <p
-                          className="pb-8 font-body text-fg/65"
-                          style={{ maxWidth: "60ch", lineHeight: 1.7 }}
+                          className="pb-8 font-body text-fg/85"
+                          style={{ fontSize: "clamp(0.9375rem, 1.15vw, 1.0625rem)", maxWidth: "62ch", lineHeight: 1.75 }}
                         >
                           {step.body}
                         </p>

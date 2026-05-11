@@ -73,11 +73,11 @@ export function ApproachSection() {
                   {/* Number badge */}
                   <span
                     className={[
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-                      "font-body text-[11px] font-medium tracking-widest transition-all duration-300",
+                      "flex h-11 w-11 shrink-0 items-center justify-center rounded-full",
+                      "font-body text-[12px] font-medium tracking-widest transition-all duration-300",
                       isActive
                         ? "bg-fg text-bg"
-                        : "border border-fg/15 text-fg/50 group-hover:border-fg/30 group-hover:text-fg/80",
+                        : "border border-line text-fg/70 group-hover:border-fg/35 group-hover:text-fg/95",
                     ].join(" ")}
                   >
                     {tab.number}
@@ -89,10 +89,10 @@ export function ApproachSection() {
                         "block font-display font-bold leading-tight transition-colors duration-200",
                         isActive
                           ? "text-fg"
-                          : "text-fg/55 group-hover:text-accent",
+                          : "text-fg/75 group-hover:text-accent",
                       ].join(" ")}
                       style={{
-                        fontSize:      "clamp(1.125rem, 1.8vw, 1.375rem)",
+                        fontSize:      "clamp(1.25rem, 1.95vw, 1.5rem)",
                         letterSpacing: "-0.01em",
                       }}
                     >
@@ -107,8 +107,8 @@ export function ApproachSection() {
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{    opacity: 0, height: 0 }}
                           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                          className="mt-3 overflow-hidden font-body text-sm text-fg/65"
-                          style={{ lineHeight: 1.65 }}
+                          className="mt-3 overflow-hidden font-body text-fg/85"
+                          style={{ fontSize: "clamp(0.9375rem, 1.15vw, 1.0625rem)", lineHeight: 1.7 }}
                         >
                           {tab.copy}
                         </motion.p>

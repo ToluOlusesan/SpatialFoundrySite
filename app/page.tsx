@@ -6,7 +6,11 @@ import { ProcessSection }      from "@/components/sections/ProcessSection";
 import { CTASection }          from "@/components/sections/CTASection";
 
 function Divider() {
-  return <hr className="border-0 border-t border-fg/8" />;
+  return (
+    <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <hr className="border-0 border-t border-line" />
+    </div>
+  );
 }
 
 export default function HomePage() {

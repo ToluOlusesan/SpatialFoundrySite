@@ -12,7 +12,7 @@
   --surface:    23  22  21;   /* #171615 — first elevation */
   --surface-2:  33  32  30;   /* #21201e — second elevation */
   --accent:    255  43   0;   /* #ff2b00 — brand orange (from wordmark.svg) */
-  --line:      255 255 255;   /* alias: use with /alpha for hairlines */
+  --line:       42  42  42;   /* #2a2a2a — dark grey hairline (NOT white-tinted) */
 }
 
 html {
@@ -24,9 +24,9 @@ body {
   background-color: rgb(var(--bg));
   color:            rgb(var(--fg));
   font-family:      var(--font-work-sans), sans-serif;
-  font-size:        clamp(0.875rem, 1.2vw, 1rem);
+  font-size:        clamp(0.9375rem, 1.25vw, 1.0625rem); /* 15–17px — bumped for legibility */
   font-weight:      400;
-  line-height:      1.6;
+  line-height:      1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap:    break-word;
@@ -55,11 +55,11 @@ body {
    ========================================================================= */
 .eyebrow {
   font-family:    var(--font-work-sans), sans-serif;
-  font-size:      0.75rem;
+  font-size:      0.8125rem;       /* 13px — was 12px */
   font-weight:    600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color:          rgb(var(--fg) / 0.55);
+  color:          rgb(var(--fg) / 0.72);
 }
 
 .accent-bar {

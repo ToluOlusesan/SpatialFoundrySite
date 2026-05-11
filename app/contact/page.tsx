@@ -81,17 +81,17 @@ export default function ContactPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex items-center justify-between border-b border-fg/8 py-4 transition-colors hover:border-fg/20"
+                          className="group flex items-center justify-between border-b border-line py-5 transition-colors hover:border-fg/30"
                         >
                           <div>
                             <span className="eyebrow mb-1 block">{link.label}</span>
-                            <span className="font-body text-sm text-fg/65 transition-colors group-hover:text-fg">
+                            <span className="font-body text-fg/85 transition-colors group-hover:text-fg" style={{ fontSize: "clamp(0.9375rem, 1.15vw, 1.0625rem)" }}>
                               {link.value}
                             </span>
                           </div>
                           <ArrowUpRight
-                            size={13}
-                            className="text-fg/35 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            size={14}
+                            className="text-fg/55 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                           />
                         </a>
                       </li>

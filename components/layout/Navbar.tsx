@@ -89,9 +89,9 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={[
-                      "relative px-3 py-1.5 font-body text-[13px] font-medium",
+                      "relative px-3.5 py-1.5 font-body text-[15px] font-medium",
                       "transition-colors duration-200",
-                      isActive ? "text-accent" : "text-fg/70 hover:text-fg",
+                      isActive ? "text-accent" : "text-fg/85 hover:text-fg",
                     ].join(" ")}
                   >
                     {link.label}
@@ -108,7 +108,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="hidden px-3 py-1.5 font-body text-[13px] font-medium text-fg/70 transition-colors hover:text-fg sm:inline-flex"
+              className="hidden px-3.5 py-1.5 font-body text-[15px] font-medium text-fg/85 transition-colors hover:text-fg sm:inline-flex"
             >
               Contact
             </Link>
@@ -149,7 +149,7 @@ export function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className="group flex items-baseline gap-5 border-b border-fg/8 py-7 last:border-b-0"
+                      className="group flex items-baseline gap-5 border-b border-line py-7 last:border-b-0"
                     >
                       <span className="font-body text-xs font-medium uppercase tracking-widest text-fg/40" style={{ minWidth: "2rem" }}>
                         0{i + 1}
@@ -189,7 +189,7 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.45, duration: 0.4, ease: "easeOut" }}
-              className="flex items-center gap-6 border-t border-fg/10 pt-8"
+              className="flex items-center gap-6 border-t border-line pt-8"
             >
               {socialLinks.map(({ href, label, Icon }) => (
                 <a

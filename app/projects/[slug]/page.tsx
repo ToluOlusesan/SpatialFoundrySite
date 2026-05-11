@@ -160,8 +160,8 @@ export default function ProjectPage({ params }: Params) {
       </section>
 
       {/* Next project */}
-      <section className="border-t border-fg/8 py-16 md:py-20">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+      <section className="py-16 md:py-20">
+        <div className="mx-auto max-w-[1400px] border-t border-line px-6 pt-16 md:px-10 md:pt-20">
           <RevealOnScroll className="flex items-center justify-between gap-8">
             <span className="eyebrow">Next Project</span>
             <Link

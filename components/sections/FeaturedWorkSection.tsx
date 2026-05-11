@@ -41,17 +41,17 @@ function IntroCard() {
         >
           Selected<br />Work
         </h3>
-        <p className="mt-5 max-w-[34ch] font-body text-fg/65" style={{ lineHeight: 1.6 }}>
+        <p className="mt-5 max-w-[36ch] font-body text-fg/85" style={{ fontSize: "clamp(1rem, 1.2vw, 1.125rem)", lineHeight: 1.65 }}>
           A curated set of recent identity systems, motion films, and brand objects we&apos;ve built.
         </p>
       </div>
 
       <Link
         href="/projects"
-        className="group inline-flex w-fit items-center gap-2 rounded-full bg-fg px-6 py-3 font-body text-[0.8125rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+        className="group inline-flex w-fit items-center gap-2 rounded-full bg-fg px-7 py-3.5 font-body text-[0.9375rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         Discover More
-        <ArrowUpRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       </Link>
     </article>
   );
