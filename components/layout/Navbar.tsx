@@ -67,22 +67,17 @@ export function Navbar() {
         }}
       >
         <nav className="flex items-center justify-between gap-4 px-6 py-5 md:px-10">
-          {/* Left: logo + tagline */}
-          <div className="flex items-center gap-3">
-            <Link href="/" aria-label="Spatial Foundry — Home" className="shrink-0">
-              <Image
-                src="/logo/logo/logo-white.png"
-                alt="Spatial Foundry"
-                width={130}
-                height={26}
-                className="h-[22px] w-auto object-contain invert"
-                priority
-              />
-            </Link>
-            <span className="hidden font-body text-[10px] font-medium uppercase tracking-[0.18em] text-fg/55 md:inline-block">
-              3D Branding Studio
-            </span>
-          </div>
+          {/* Left: logo */}
+          <Link href="/" aria-label="Spatial Foundry — Home" className="shrink-0">
+            <Image
+              src="/logo/logo/logo-white.png"
+              alt="Spatial Foundry"
+              width={130}
+              height={26}
+              className="h-[22px] w-auto object-contain invert"
+              priority
+            />
+          </Link>
 
           {/* Right: nav links + contact + menu */}
           <div className="flex items-center gap-1">

@@ -163,3 +163,19 @@ body {
   .lava-drift-5,
   .lava-drift-6 { animation: none; }
 }
+
+/* =========================================================================
+   Infinite horizontal marquee — used under the hero card.
+   Content is duplicated in markup; track translates by -50% then loops.
+   ========================================================================= */
+@keyframes marquee-x {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-x 38s linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
