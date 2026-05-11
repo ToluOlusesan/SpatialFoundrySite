@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 /* =========================================================================
-   Design tokens — DESIGN.md spec. RGB triplets for Tailwind alpha modifiers.
-   No dark mode. The palette is intentionally warm and singular.
+   Design tokens — dark-mode-only studio palette.
+   RGB triplets so Tailwind alpha modifiers (rgb(var(--fg) / 0.6)) work.
    ========================================================================= */
 :root {
-  --bg:        250 250 249;   /* #fafaf9 — warm off-white */
-  --fg:         13  13  12;   /* #0d0d0c — near black */
-  --surface:   240 239 237;   /* #f0efed — card backgrounds */
-  --surface-2: 230 228 225;   /* #e6e4e1 — elevated surfaces */
-  --accent:    200  82  26;   /* #c8521a — burnt orange */
-  --line:       13  13  12;   /* alias: use with /10 for borders */
+  --bg:         13  13  13;   /* #0d0d0d — requested */
+  --fg:        237 234 228;   /* #ededea — warm off-white */
+  --surface:    23  22  21;   /* #171615 — first elevation */
+  --surface-2:  33  32  30;   /* #21201e — second elevation */
+  --accent:    200  82  26;   /* #c8521a — brand burnt orange */
+  --line:      237 234 228;   /* alias: use with /alpha for hairlines */
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme:    dark;
 }
 
 body {
@@ -29,30 +29,29 @@ body {
   line-height:      1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-wrap: break-word;
+  overflow-wrap:    break-word;
 }
 
-/* Selection — accent background + white text per DESIGN.md */
+/* Selection — accent bg + white text */
 ::selection {
   background-color: rgb(var(--accent));
   color:            #ffffff;
 }
 
-/* Scrollbar — 6px, surface-2 track, fg/15 thumb */
+/* Scrollbar — slim, warm muted thumb */
 ::-webkit-scrollbar       { width: 6px; }
-::-webkit-scrollbar-track { background: rgb(var(--surface-2)); }
+::-webkit-scrollbar-track { background: rgb(var(--bg)); }
 ::-webkit-scrollbar-thumb {
-  background:    rgb(var(--fg) / 0.15);
+  background:    rgb(var(--fg) / 0.14);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--fg) / 0.35);
+  background: rgb(var(--fg) / 0.32);
 }
 
 /* =========================================================================
-   Eyebrow — 12px, 600 weight, 0.15em tracking, muted (fg at 62%) per spec.
-   .accent-bar adds the burnt-orange left bar for anchoring key sections.
-   Use sparingly — one per section maximum.
+   Eyebrow — 12px / 600 / 0.15em tracking. .accent-bar adds the burnt-orange
+   anchor bar. Use sparingly — one per section maximum.
    ========================================================================= */
 .eyebrow {
   font-family:    var(--font-work-sans), sans-serif;
@@ -69,18 +68,17 @@ body {
   gap:         0.625rem;
 }
 .accent-bar::before {
-  content:      '';
-  display:      block;
-  flex-shrink:  0;
-  width:        20px;
-  height:       2px;
-  background:   rgb(var(--accent));
+  content:       '';
+  display:       block;
+  flex-shrink:   0;
+  width:         20px;
+  height:        2px;
+  background:    rgb(var(--accent));
   border-radius: 1px;
 }
 
 /* =========================================================================
-   Link underline — animated pseudo-element, scale from 0→1 on hover.
-   Origin switches: rest = right, hover = left. Duration 0.3s spring.
+   Link underline — pseudo-element scaleX, right-origin rest → left-origin hover.
    ========================================================================= */
 .link-underline {
   position:        relative;
@@ -96,7 +94,7 @@ body {
   background:       currentColor;
   transform:        scaleX(0);
   transform-origin: right;
-  transition:       transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition:       transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .link-underline:hover::after {
   transform:        scaleX(1);
@@ -110,9 +108,8 @@ body {
 }
 
 /* =========================================================================
-   Lava / molten-metal hero blobs
-   Six independently-drifting radial gradients create the fluid magma look.
-   Reduced-motion users get static blobs (no transforms).
+   Hero ambience — slow drifting blobs. Kept available for any dark section
+   that wants warm atmospheric depth.
    ========================================================================= */
 .lava-blob {
   position:      absolute;
@@ -134,48 +131,13 @@ body {
   35%       { transform: translate(9%,  -9%)   scale(1.06); }
   65%       { transform: translate(-7%,  6%)   scale(1.09); }
 }
-@keyframes lava-drift-4 {
-  0%, 100% { transform: translate(0%,   0%)   scale(1);    opacity: 0.8; }
-  50%       { transform: translate(-14%, 18%)  scale(1.22); opacity: 1;   }
-}
-@keyframes lava-drift-5 {
-  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
-  45%       { transform: translate(12%,  -6%)  scale(1.08); }
-  80%       { transform: translate(-6%,  10%)  scale(0.94); }
-}
-@keyframes lava-drift-6 {
-  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
-  50%       { transform: translate(8%,  -14%)  scale(1.12); }
-}
 
 .lava-drift-1 { animation: lava-drift-1 13s ease-in-out infinite; }
 .lava-drift-2 { animation: lava-drift-2 17s ease-in-out infinite; }
 .lava-drift-3 { animation: lava-drift-3 20s ease-in-out infinite; }
-.lava-drift-4 { animation: lava-drift-4  9s ease-in-out infinite; }
-.lava-drift-5 { animation: lava-drift-5 23s ease-in-out infinite; }
-.lava-drift-6 { animation: lava-drift-6 15s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .lava-drift-1,
   .lava-drift-2,
-  .lava-drift-3,
-  .lava-drift-4,
-  .lava-drift-5,
-  .lava-drift-6 { animation: none; }
-}
-
-/* =========================================================================
-   Infinite horizontal marquee — used under the hero card.
-   Content is duplicated in markup; track translates by -50% then loops.
-   ========================================================================= */
-@keyframes marquee-x {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee-x 38s linear infinite;
-  will-change: transform;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
+  .lava-drift-3 { animation: none; }
 }

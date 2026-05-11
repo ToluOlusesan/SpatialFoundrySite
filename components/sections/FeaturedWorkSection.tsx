@@ -32,7 +32,7 @@ function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {
       <motion.article
         whileHover={{ scale: 1.005 }}
         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-        className="relative overflow-hidden rounded-2xl bg-surface"
+        className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
         style={{ aspectRatio: "16/9" }}
       >
         {image ? (

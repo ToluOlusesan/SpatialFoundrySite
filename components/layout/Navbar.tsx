@@ -74,7 +74,7 @@ export function Navbar() {
               alt="Spatial Foundry"
               width={130}
               height={26}
-              className="h-[22px] w-auto object-contain invert"
+              className="h-[22px] w-auto object-contain"
               priority
             />
           </Link>

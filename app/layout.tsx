@@ -38,6 +38,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicons/32x32/favicon-orange.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicons/16x16/favicon-orange.png" />
+        <meta name="theme-color" content="#0d0d0d" />
       </head>
       <body className="bg-bg text-fg font-body antialiased overflow-x-hidden">
         <Navbar />

@@ -56,7 +56,7 @@ export function Footer() {
               alt="Spatial Foundry"
               width={130}
               height={26}
-              className="h-5 w-auto object-contain opacity-60 invert transition-opacity duration-200 hover:opacity-100"
+              className="h-5 w-auto object-contain opacity-55 transition-opacity duration-200 hover:opacity-100"
             />
           </Link>
 
