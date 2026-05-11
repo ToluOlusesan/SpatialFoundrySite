@@ -39,11 +39,11 @@ const socialLinks = [
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled]  = useState(false);
-  const pathname                  = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const pathname                 = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -57,62 +57,63 @@ export function Navbar() {
 
   return (
     <>
-      {/* Floating pill navbar */}
-      <div className="fixed left-1/2 top-5 z-50 w-[calc(100%-48px)] max-w-[1100px] -translate-x-1/2">
-        <nav
-          className="relative flex items-center justify-between gap-4 rounded-full border border-fg/10 px-4 py-2.5 md:px-5"
-          style={{
-            backdropFilter:       "blur(16px) saturate(140%)",
-            WebkitBackdropFilter: "blur(16px) saturate(140%)",
-            backgroundColor: scrolled
-              ? "rgb(var(--bg) / 0.92)"
-              : "rgb(var(--bg) / 0.6)",
-            transition: "background-color 0.3s ease",
-          }}
-        >
-          {/* Left: Logo */}
-          <Link href="/" aria-label="Spatial Foundry — Home" className="shrink-0">
-            <Image
-              src="/logo/logo/logo-white.png"
-              alt="Spatial Foundry"
-              width={130}
-              height={26}
-              className="h-[22px] w-auto object-contain invert"
-              priority
-            />
-          </Link>
-
-          {/* Center: nav links — absolutely centered */}
-          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={[
-                    "relative px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.12em]",
-                    "transition-colors duration-200",
-                    isActive ? "text-accent" : "text-fg/55 hover:text-fg",
-                  ].join(" ")}
-                >
-                  {link.label}
-                  {isActive && (
-                    <span
-                      aria-hidden="true"
-                      className="absolute -bottom-0.5 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-accent"
-                    />
-                  )}
-                </Link>
-              );
-            })}
+      {/* Full-width nav */}
+      <header
+        className="fixed left-0 right-0 top-0 z-50 transition-colors duration-300"
+        style={{
+          backgroundColor:      scrolled ? "rgb(var(--bg) / 0.85)" : "transparent",
+          backdropFilter:       scrolled ? "blur(14px) saturate(140%)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(14px) saturate(140%)" : "none",
+        }}
+      >
+        <nav className="flex items-center justify-between gap-4 px-6 py-5 md:px-10">
+          {/* Left: logo + tagline */}
+          <div className="flex items-center gap-3">
+            <Link href="/" aria-label="Spatial Foundry — Home" className="shrink-0">
+              <Image
+                src="/logo/logo/logo-white.png"
+                alt="Spatial Foundry"
+                width={130}
+                height={26}
+                className="h-[22px] w-auto object-contain invert"
+                priority
+              />
+            </Link>
+            <span className="hidden font-body text-[10px] font-medium uppercase tracking-[0.18em] text-fg/55 md:inline-block">
+              3D Branding Studio
+            </span>
           </div>
 
-          {/* Right: Contact + Menu */}
-          <div className="flex shrink-0 items-center gap-2">
+          {/* Right: nav links + contact + menu */}
+          <div className="flex items-center gap-1">
+            <div className="mr-2 hidden items-center gap-1 md:flex">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={[
+                      "relative px-3 py-1.5 font-body text-[13px] font-medium",
+                      "transition-colors duration-200",
+                      isActive ? "text-accent" : "text-fg/70 hover:text-fg",
+                    ].join(" ")}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute -bottom-0.5 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-accent"
+                      />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+
             <Link
               href="/contact"
-              className="hidden rounded-full border border-fg/15 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-300 hover:border-fg/25 hover:bg-surface sm:inline-flex"
+              className="hidden px-3 py-1.5 font-body text-[13px] font-medium text-fg/70 transition-colors hover:text-fg sm:inline-flex"
             >
               Contact
             </Link>
@@ -121,20 +122,14 @@ export function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
-              className="flex items-center gap-2 rounded-full border border-fg/15 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-200 hover:border-fg/25 hover:bg-surface"
+              className="ml-2 flex flex-col gap-[5px] p-2 transition-opacity hover:opacity-70"
             >
-              {menuOpen ? "Close" : "Menu"}
-              <span
-                aria-hidden="true"
-                className="text-base leading-none transition-transform duration-300"
-                style={{ display: "inline-block", transform: menuOpen ? "rotate(45deg)" : "rotate(0deg)" }}
-              >
-                +
-              </span>
+              <span className="block h-[1.5px] w-5 bg-fg" />
+              <span className="block h-[1.5px] w-5 bg-fg" />
             </button>
           </div>
         </nav>
-      </div>
+      </header>
 
       {/* Full-screen menu overlay */}
       <AnimatePresence>
