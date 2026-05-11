@@ -24,45 +24,12 @@ const featuredProjects: Project[] = [
   },
 ];
 
-function IntroCard() {
-  return (
-    <article
-      className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface p-8 md:p-10"
-      style={{ aspectRatio: "16/9" }}
-    >
-      <div>
-        <h3
-          className="font-display font-bold text-fg"
-          style={{
-            fontSize:      "clamp(1.75rem, 3.4vw, 3rem)",
-            letterSpacing: "-0.025em",
-            lineHeight:    1.0,
-          }}
-        >
-          Selected<br />Work
-        </h3>
-        <p className="mt-5 max-w-[36ch] font-body text-fg/85" style={{ fontSize: "clamp(1rem, 1.2vw, 1.125rem)", lineHeight: 1.65 }}>
-          A curated set of recent identity systems, motion films, and brand objects we&apos;ve built.
-        </p>
-      </div>
-
-      <Link
-        href="/projects"
-        className="group inline-flex w-fit items-center gap-2 rounded-full bg-fg px-7 py-3.5 font-body text-[0.9375rem] font-medium uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
-      >
-        Discover More
-        <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-      </Link>
-    </article>
-  );
-}
-
 function ProjectCard({ slug, label, sub, tags, image }: Project) {
   return (
     <Link href={`/projects/${slug}`} className="group block">
       <motion.article
         whileHover={{ scale: 1.005 }}
-        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
         style={{ aspectRatio: "16/9" }}
       >
@@ -72,37 +39,42 @@ function ProjectCard({ slug, label, sub, tags, image }: Project) {
             alt={label}
             fill
             className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            quality={90}
+            sizes="100vw"
+            quality={92}
+            priority
           />
         )}
 
+        {/* Resting label scrim — always shown subtly, intensifies on hover */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 z-[5] opacity-90 transition-opacity duration-300 group-hover:opacity-100"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.18) 38%, transparent 62%)" }}
+        />
+
         {/* Hover arrow — solid white circle, top-right */}
-        <div className="absolute right-4 top-4 z-20 opacity-0 transition-all duration-300 group-hover:opacity-100">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-md">
-            <ArrowUpRight size={14} />
+        <div className="absolute right-5 top-5 z-20 translate-y-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-lg">
+            <ArrowUpRight size={16} />
           </div>
         </div>
 
-        {/* Dark scrim — fades in on hover */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 z-[5] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)" }}
-        />
-
-        {/* Label slides in on hover */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-2 p-6 opacity-0 transition-all duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100">
-          <p
-            className="font-display mb-1 font-bold leading-tight text-white"
-            style={{ fontSize: "clamp(1.375rem, 2.5vw, 2rem)", letterSpacing: "-0.02em" }}
-          >
-            {label}
-          </p>
-          <div className="flex items-end justify-between gap-4">
-            <p className="font-body text-sm text-white/85">{sub}</p>
-            <span className="shrink-0 font-body text-[10px] uppercase tracking-[0.12em] text-white/60">{tags}</span>
+        {/* Resting label */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col gap-2 p-7 md:flex-row md:items-end md:justify-between md:gap-8 md:p-9 lg:p-10">
+          <div>
+            <p className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-white/65">
+              {tags}
+            </p>
+            <p
+              className="font-display mt-2 font-bold leading-[0.95] text-white"
+              style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)", letterSpacing: "-0.025em" }}
+            >
+              {label}
+            </p>
           </div>
+          <p className="font-body text-fg/85 md:max-w-[28ch] md:text-right" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)" }}>
+            {sub}
+          </p>
         </div>
       </motion.article>
     </Link>
@@ -114,18 +86,70 @@ export function FeaturedWorkSection() {
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
 
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {/* ── Massive header row ── */}
+        <div className="mb-14 grid grid-cols-12 gap-8 md:mb-20 md:items-end lg:gap-12">
 
-          <RevealOnScroll>
-            <IntroCard />
+          {/* LEFT — Selected\nWorks. + NEW badge */}
+          <RevealOnScroll className="col-span-12 md:col-span-5">
+            <h2
+              className="relative font-display font-bold leading-[0.95] text-fg"
+              style={{
+                fontSize:      "clamp(3rem, 8vw, 8rem)",
+                letterSpacing: "-0.035em",
+              }}
+            >
+              <span className="relative inline-block">
+                Selected
+                <span
+                  className="absolute -top-1 right-[-0.4em] inline-flex items-center rounded-md bg-accent px-2 py-0.5 font-body text-[11px] font-bold uppercase tracking-[0.12em] text-bg md:-top-2 md:text-[12px]"
+                  aria-hidden="true"
+                >
+                  New
+                </span>
+              </span>
+              <br />
+              Works.
+            </h2>
           </RevealOnScroll>
 
+          {/* CENTER — Projects eyebrow + description */}
+          <RevealOnScroll delay={0.1} className="col-span-12 md:col-span-4 md:pb-3 lg:pb-4">
+            <span className="eyebrow mb-4 block">Projects</span>
+            <p
+              className="font-body text-fg/85"
+              style={{
+                fontSize:   "clamp(0.9375rem, 1.15vw, 1.0625rem)",
+                lineHeight: 1.65,
+                maxWidth:   "36ch",
+              }}
+            >
+              A curated set of recent identity systems, motion films, and brand
+              objects — built for clarity at every scale.
+            </p>
+          </RevealOnScroll>
+
+          {/* RIGHT — Form. mirror word */}
+          <RevealOnScroll delay={0.2} className="col-span-12 md:col-span-3 md:text-right">
+            <h3
+              className="font-display font-bold leading-[0.95] text-fg"
+              style={{
+                fontSize:      "clamp(3rem, 8vw, 8rem)",
+                letterSpacing: "-0.035em",
+              }}
+            >
+              Form.
+            </h3>
+          </RevealOnScroll>
+
+        </div>
+
+        {/* ── Wide project showcase ── */}
+        <div className="flex flex-col gap-5">
           {featuredProjects.map((project, i) => (
-            <RevealOnScroll key={project.slug} delay={0.08 + i * 0.08}>
+            <RevealOnScroll key={project.slug} delay={0.25 + i * 0.08}>
               <ProjectCard {...project} />
             </RevealOnScroll>
           ))}
-
         </div>
 
       </div>
