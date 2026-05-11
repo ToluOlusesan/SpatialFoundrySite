@@ -86,59 +86,36 @@ export function FeaturedWorkSection() {
     <section className="py-24 md:py-32">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
 
-        {/* ── Massive header row ── */}
+        {/* ── Header row ── */}
         <div className="mb-14 grid grid-cols-12 gap-8 md:mb-20 md:items-end lg:gap-12">
 
-          {/* LEFT — Selected\nWorks. + NEW badge */}
-          <RevealOnScroll className="col-span-12 md:col-span-5">
+          {/* LEFT — Selected\nWorks. */}
+          <RevealOnScroll className="col-span-12 md:col-span-7">
             <h2
-              className="relative font-display font-bold leading-[0.95] text-fg"
+              className="font-display font-bold leading-[0.95] text-fg"
               style={{
-                fontSize:      "clamp(3rem, 8vw, 8rem)",
-                letterSpacing: "-0.035em",
+                fontSize:      "clamp(2.5rem, 5.4vw, 5.75rem)",
+                letterSpacing: "-0.03em",
               }}
             >
-              <span className="relative inline-block">
-                Selected
-                <span
-                  className="absolute -top-1 right-[-0.4em] inline-flex items-center rounded-md bg-accent px-2 py-0.5 font-body text-[11px] font-bold uppercase tracking-[0.12em] text-bg md:-top-2 md:text-[12px]"
-                  aria-hidden="true"
-                >
-                  New
-                </span>
-              </span>
-              <br />
-              Works.
+              Selected<br />Works.
             </h2>
           </RevealOnScroll>
 
-          {/* CENTER — Projects eyebrow + description */}
-          <RevealOnScroll delay={0.1} className="col-span-12 md:col-span-4 md:pb-3 lg:pb-4">
+          {/* RIGHT — Projects eyebrow + description */}
+          <RevealOnScroll delay={0.1} className="col-span-12 md:col-span-5 md:pb-2 lg:pb-3">
             <span className="eyebrow mb-4 block">Projects</span>
             <p
               className="font-body text-fg/85"
               style={{
                 fontSize:   "clamp(0.9375rem, 1.15vw, 1.0625rem)",
                 lineHeight: 1.65,
-                maxWidth:   "36ch",
+                maxWidth:   "42ch",
               }}
             >
               A curated set of recent identity systems, motion films, and brand
               objects — built for clarity at every scale.
             </p>
-          </RevealOnScroll>
-
-          {/* RIGHT — Form. mirror word */}
-          <RevealOnScroll delay={0.2} className="col-span-12 md:col-span-3 md:text-right">
-            <h3
-              className="font-display font-bold leading-[0.95] text-fg"
-              style={{
-                fontSize:      "clamp(3rem, 8vw, 8rem)",
-                letterSpacing: "-0.035em",
-              }}
-            >
-              Form.
-            </h3>
           </RevealOnScroll>
 
         </div>
