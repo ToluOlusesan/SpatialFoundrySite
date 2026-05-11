@@ -3,18 +3,16 @@
 @tailwind utilities;
 
 /* =========================================================================
-   Theme tokens — rgb triplets so Tailwind alpha modifiers work:
-   bg-fg/55, border-line/40, etc.
-
-   Light (:root) is warm bone — studio / gallery, not clinical paper-white.
-   Dark (.dark) is near-black with generous cold-white foreground.
+   Design tokens — DESIGN.md spec. RGB triplets for Tailwind alpha modifiers.
+   No dark mode. The palette is intentionally warm and singular.
    ========================================================================= */
 :root {
-  --bg:      255 255 255;
-  --fg:       10  10  10;
-  --muted:   115 115 115;
-  --line:    229 229 229;
-  --surface: 247 247 247;
+  --bg:        250 250 249;   /* #fafaf9 — warm off-white */
+  --fg:         13  13  12;   /* #0d0d0c — near black */
+  --surface:   240 239 237;   /* #f0efed — card backgrounds */
+  --surface-2: 230 228 225;   /* #e6e4e1 — elevated surfaces */
+  --accent:    200  82  26;   /* #c8521a — burnt orange */
+  --line:       13  13  12;   /* alias: use with /10 for borders */
 }
 
 html {
@@ -25,39 +23,84 @@ html {
 body {
   background-color: rgb(var(--bg));
   color:            rgb(var(--fg));
-  font-family: var(--font-work-sans), sans-serif;
-  font-size: 1.25rem; /* 20px base — scales all rem-based type up */
-  font-weight: 500;
+  font-family:      var(--font-work-sans), sans-serif;
+  font-size:        clamp(0.875rem, 1.2vw, 1rem);
+  font-weight:      400;
+  line-height:      1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-wrap: break-word;
 }
 
-/* Selection — inverted fg / bg, same feel in both themes */
+/* Selection — accent background + white text per DESIGN.md */
 ::selection {
-  background-color: rgb(var(--fg));
-  color:            rgb(var(--bg));
+  background-color: rgb(var(--accent));
+  color:            #ffffff;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar       { width: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
+/* Scrollbar — 6px, surface-2 track, fg/15 thumb */
+::-webkit-scrollbar       { width: 6px; }
+::-webkit-scrollbar-track { background: rgb(var(--surface-2)); }
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--fg) / 0.18);
-  border-radius: 2px;
+  background:    rgb(var(--fg) / 0.15);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--fg) / 0.45);
+  background: rgb(var(--fg) / 0.35);
 }
 
-/* Eyebrow — full-opacity foreground, distinguished by size + tracking only */
+/* =========================================================================
+   Eyebrow — 12px, 600 weight, 0.15em tracking, muted (fg at 62%) per spec.
+   .accent-bar adds the burnt-orange left bar for anchoring key sections.
+   Use sparingly — one per section maximum.
+   ========================================================================= */
 .eyebrow {
-  font-family: var(--font-work-sans), sans-serif;
-  font-size:      0.6875rem;
-  font-weight:    500;
-  letter-spacing: 0.14em;
+  font-family:    var(--font-work-sans), sans-serif;
+  font-size:      0.75rem;
+  font-weight:    600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color:          rgb(var(--fg));
+  color:          rgb(var(--fg) / 0.55);
+}
+
+.accent-bar {
+  display:     flex;
+  align-items: center;
+  gap:         0.625rem;
+}
+.accent-bar::before {
+  content:      '';
+  display:      block;
+  flex-shrink:  0;
+  width:        20px;
+  height:       2px;
+  background:   rgb(var(--accent));
+  border-radius: 1px;
+}
+
+/* =========================================================================
+   Link underline — animated pseudo-element, scale from 0→1 on hover.
+   Origin switches: rest = right, hover = left. Duration 0.3s spring.
+   ========================================================================= */
+.link-underline {
+  position:        relative;
+  text-decoration: none;
+}
+.link-underline::after {
+  content:          '';
+  position:         absolute;
+  bottom:           -1px;
+  left:             0;
+  width:            100%;
+  height:           1px;
+  background:       currentColor;
+  transform:        scaleX(0);
+  transform-origin: right;
+  transition:       transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  transform:        scaleX(1);
+  transform-origin: left;
 }
 
 .prose-body { max-width: 65ch; }

@@ -47,18 +47,18 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pb-16 pt-32 md:pb-20 md:pt-40 lg:pt-48">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="pb-24 pt-36 md:pb-32 md:pt-48">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll>
-            <span className="eyebrow mb-6 block">— The Studio</span>
+            <span className="eyebrow accent-bar mb-8 block">The Studio</span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.08}>
             <h1
               className="font-display font-bold text-fg"
               style={{
-                fontSize:      "clamp(2.25rem, 4vw, 3.75rem)",
-                letterSpacing: "-0.02em",
-                lineHeight:    1.1,
+                fontSize:      "clamp(2.5rem, 5vw, 4.5rem)",
+                letterSpacing: "-0.025em",
+                lineHeight:    1.05,
                 maxWidth:      "20ch",
               }}
             >
@@ -68,9 +68,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Full-width render — drop image at /images/about-render.jpg to activate */}
+      {/* Full-width render placeholder */}
       <section className="pb-0 pt-4">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll>
             <PlaceholderRender
               label="[ Studio / Brand Render ]"
@@ -82,12 +82,12 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy */}
-      <section className="py-16 md:py-20 lg:py-[120px]">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll>
             <p
-              className="mb-7 font-body text-base leading-relaxed text-fg"
-              style={{ maxWidth: "65ch", lineHeight: 1.65 }}
+              className="mb-7 font-body text-fg/70"
+              style={{ maxWidth: "65ch", lineHeight: 1.7 }}
             >
               Spatial Foundry was built around a frustration: that 3D design in
               branding had become decoration. Beautiful renders dropped into
@@ -99,8 +99,8 @@ export default function AboutPage() {
           </RevealOnScroll>
           <RevealOnScroll delay={0.1}>
             <p
-              className="font-body text-base leading-relaxed text-fg"
-              style={{ maxWidth: "65ch", lineHeight: 1.65 }}
+              className="font-body text-fg/70"
+              style={{ maxWidth: "65ch", lineHeight: 1.7 }}
             >
               We don&apos;t render things. We build spatial identities. The
               renders are evidence. What we&apos;re really making is a language
@@ -112,27 +112,27 @@ export default function AboutPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="py-16 md:py-20 lg:py-[120px]">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll className="mb-14">
-            <span className="eyebrow mb-3 block">— Capabilities</span>
+            <span className="eyebrow accent-bar mb-4 block">Capabilities</span>
             <h2
               className="font-display font-bold text-fg"
               style={{
-                fontSize:      "clamp(1.75rem, 3vw, 2.75rem)",
-                letterSpacing: "-0.015em",
-                lineHeight:    1.15,
+                fontSize:      "clamp(2rem, 3.5vw, 3rem)",
+                letterSpacing: "-0.02em",
+                lineHeight:    1.1,
               }}
             >
               What We Do
             </h2>
           </RevealOnScroll>
 
-          {/* Gap-of-1-px trick = hairline divider grid that inherits theme bg */}
+          {/* Gap-of-1px = hairline border grid */}
           <div className="grid grid-cols-1 gap-px bg-fg/8 md:grid-cols-2">
             {capabilities.map((cap, i) => (
-              <RevealOnScroll key={cap.title} delay={i * 0.08}>
-                <div className="bg-bg p-10 transition-colors duration-300 hover:bg-surface">
+              <RevealOnScroll key={cap.title} delay={i * 0.07}>
+                <div className="bg-bg p-10 transition-colors duration-[350ms] hover:bg-surface">
                   <h3
                     className="font-display mb-4 font-bold text-fg"
                     style={{
@@ -144,7 +144,7 @@ export default function AboutPage() {
                     {cap.title}
                   </h3>
                   <p
-                    className="font-body text-sm leading-relaxed text-fg"
+                    className="font-body text-fg/65"
                     style={{ lineHeight: 1.65 }}
                   >
                     {cap.body}
@@ -156,9 +156,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* The Person */}
-      <section className="py-16 md:py-20 lg:py-[120px]">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      {/* The Founder */}
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-12">
             {/* Portrait placeholder */}
             <RevealOnScroll className="lg:col-span-5">
@@ -171,31 +171,31 @@ export default function AboutPage() {
 
             {/* Bio */}
             <div className="flex flex-col justify-center lg:col-span-7">
-              <RevealOnScroll delay={0.1}>
-                <span className="eyebrow mb-6 block">— The Founder</span>
+              <RevealOnScroll delay={0.08}>
+                <span className="eyebrow accent-bar mb-6 block">The Founder</span>
               </RevealOnScroll>
 
-              <RevealOnScroll delay={0.14}>
+              <RevealOnScroll delay={0.12}>
                 <h2
                   className="font-display mb-2 font-bold text-fg"
                   style={{
                     fontSize:      "clamp(2.25rem, 4vw, 3.75rem)",
-                    letterSpacing: "-0.02em",
-                    lineHeight:    1.1,
+                    letterSpacing: "-0.025em",
+                    lineHeight:    1.05,
                   }}
                 >
                   Olusesan Tolu
                 </h2>
               </RevealOnScroll>
 
-              <RevealOnScroll delay={0.17}>
-                <p className="eyebrow mb-8">Founder & Creative Director</p>
+              <RevealOnScroll delay={0.15}>
+                <p className="eyebrow mb-8">Founder &amp; Creative Director</p>
               </RevealOnScroll>
 
-              <RevealOnScroll delay={0.21}>
+              <RevealOnScroll delay={0.19}>
                 <p
-                  className="mb-6 font-body text-base leading-relaxed text-fg"
-                  style={{ maxWidth: "55ch", lineHeight: 1.65 }}
+                  className="mb-6 font-body text-fg/70"
+                  style={{ maxWidth: "55ch", lineHeight: 1.7 }}
                 >
                   I started as a writer — short stories and fiction before I
                   ever touched a design tool. That background shaped how I
@@ -206,10 +206,10 @@ export default function AboutPage() {
                 </p>
               </RevealOnScroll>
 
-              <RevealOnScroll delay={0.25}>
+              <RevealOnScroll delay={0.23}>
                 <p
-                  className="font-body text-base leading-relaxed text-fg"
-                  style={{ maxWidth: "55ch", lineHeight: 1.65 }}
+                  className="font-body text-fg/70"
+                  style={{ maxWidth: "55ch", lineHeight: 1.7 }}
                 >
                   I&apos;ve spent years at the intersection of product design
                   and 3D — working in-house at fintech companies and
@@ -223,16 +223,16 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16 md:py-20 lg:py-[120px]">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll className="mb-14">
-            <span className="eyebrow mb-3 block">— Principles</span>
+            <span className="eyebrow accent-bar mb-4 block">Principles</span>
             <h2
               className="font-display font-bold text-fg"
               style={{
-                fontSize:      "clamp(1.75rem, 3vw, 2.75rem)",
-                letterSpacing: "-0.015em",
-                lineHeight:    1.15,
+                fontSize:      "clamp(2rem, 3.5vw, 3rem)",
+                letterSpacing: "-0.02em",
+                lineHeight:    1.1,
               }}
             >
               What We Stand For
@@ -241,9 +241,9 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
             {values.map((val, i) => (
-              <RevealOnScroll key={val.title} delay={i * 0.1}>
+              <RevealOnScroll key={val.title} delay={i * 0.09}>
                 <article>
-                  <div className="mb-5 h-px w-8 bg-fg" />
+                  <div className="mb-5 h-px w-8 bg-accent" />
                   <h3
                     className="font-display mb-4 font-bold text-fg"
                     style={{
@@ -255,7 +255,7 @@ export default function AboutPage() {
                     {val.title}
                   </h3>
                   <p
-                    className="font-body text-sm leading-relaxed text-fg"
+                    className="font-body text-fg/65"
                     style={{ lineHeight: 1.65 }}
                   >
                     {val.body}

@@ -31,15 +31,19 @@ export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   return (
-    <section className="py-16 md:py-20 lg:py-[120px]">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+    <section className="py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
 
         {/* Header */}
-        <RevealOnScroll className="mb-6">
+        <RevealOnScroll>
+          <span className="eyebrow accent-bar mb-5 block">The Process</span>
+        </RevealOnScroll>
+
+        <RevealOnScroll delay={0.06} className="mb-4">
           <h2
             className="font-display font-bold text-fg"
             style={{
-              fontSize:      "clamp(1.75rem, 3.5vw, 3.25rem)",
+              fontSize:      "clamp(2rem, 3.5vw, 3.25rem)",
               letterSpacing: "-0.02em",
               lineHeight:    1.1,
               maxWidth:      "14ch",
@@ -49,9 +53,9 @@ export function ProcessSection() {
           </h2>
         </RevealOnScroll>
 
-        <RevealOnScroll delay={0.08}>
+        <RevealOnScroll delay={0.1}>
           <p
-            className="mb-14 font-body text-base text-fg/60"
+            className="mb-16 font-body text-fg/60"
             style={{ maxWidth: "55ch", lineHeight: 1.65 }}
           >
             No black boxes, no guesswork — just a clear path from your brief to
@@ -69,12 +73,13 @@ export function ProcessSection() {
                   <button
                     onClick={() => setActiveStep(isActive ? null : i)}
                     aria-expanded={isActive}
-                    className="group flex w-full items-center justify-between gap-6 py-6 text-left"
+                    className="group flex w-full items-center justify-between gap-6 py-7 text-left focus-visible:outline-none"
                   >
                     <span
-                      className={`font-display font-bold leading-tight transition-all duration-300 ${
-                        isActive ? "text-fg" : "text-fg/40 group-hover:text-fg/70"
-                      }`}
+                      className={[
+                        "font-display font-bold leading-tight transition-colors duration-200",
+                        isActive ? "text-fg" : "text-fg/40 group-hover:text-accent",
+                      ].join(" ")}
                       style={{
                         fontSize:      "clamp(1.2rem, 2vw, 1.75rem)",
                         letterSpacing: "-0.015em",
@@ -85,16 +90,18 @@ export function ProcessSection() {
 
                     {/* Circle toggle */}
                     <span
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      className={[
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-full border",
+                        "transition-all duration-300",
                         isActive
                           ? "border-fg bg-fg text-bg"
-                          : "border-fg/15 text-fg/40 group-hover:border-fg/30 group-hover:text-fg/70"
-                      }`}
+                          : "border-fg/15 text-fg/40 group-hover:border-fg/30 group-hover:text-fg/70",
+                      ].join(" ")}
                       aria-hidden="true"
                     >
                       <span
-                        className="font-body text-lg font-medium leading-none transition-transform duration-300"
-                        style={{ transform: isActive ? "rotate(45deg)" : "rotate(0deg)", display: "inline-block" }}
+                        className="text-lg font-medium leading-none transition-transform duration-300"
+                        style={{ display: "inline-block", transform: isActive ? "rotate(45deg)" : "rotate(0deg)" }}
                       >
                         +
                       </span>
@@ -107,11 +114,11 @@ export function ProcessSection() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{    opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
                         <p
-                          className="pb-7 font-body text-base text-fg/70"
+                          className="pb-8 font-body text-fg/65"
                           style={{ maxWidth: "60ch", lineHeight: 1.7 }}
                         >
                           {step.body}

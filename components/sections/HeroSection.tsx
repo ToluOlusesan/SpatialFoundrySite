@@ -9,10 +9,8 @@ const words = ["Your", "brand", "has", "form,", "we", "define", "it."];
 
 export function HeroSection() {
   return (
-    // Image-dominant section — forces dark tokens inside its subtree and
-    // hardcodes white text so the hero stays legible regardless of site theme.
-    <section className="dark relative flex h-screen w-full flex-col overflow-hidden bg-black text-white">
-      {/* Hero image — swap /public/images/hero.png to change */}
+    <section className="relative flex h-[100svh] min-h-[600px] w-full flex-col overflow-hidden bg-black text-white">
+      {/* Hero image */}
       <div className="absolute inset-0 bg-black">
         <Image
           src="/images/hero.png"
@@ -21,20 +19,23 @@ export function HeroSection() {
           priority
           className="object-cover object-center"
           sizes="100vw"
+          quality={90}
         />
 
-        {/* Soft bottom scrim — centered text needs even falloff top+bottom */}
+        {/* Bottom scrim — dark gradient so text reads over image */}
         <div
+          aria-hidden="true"
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0) 75%)",
+              "linear-gradient(to top, rgba(3,3,3,0.88) 0%, rgba(3,3,3,0.3) 45%, rgba(3,3,3,0.23) 75%, transparent 100%)",
           }}
         />
       </div>
 
-      {/* Left-aligned hero block */}
-      <div className="relative z-10 mt-auto flex flex-col items-start px-6 pb-20 md:px-12">
+      {/* Hero content — bottom-left anchored */}
+      <div className="relative z-10 mt-auto flex flex-col items-start px-6 pb-20 md:px-10">
+        {/* Staggered word-by-word heading */}
         <h1
           suppressHydrationWarning
           className="font-display max-w-4xl font-bold text-white"
@@ -47,12 +48,12 @@ export function HeroSection() {
           {words.map((word, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay:    0.4 + i * 0.08,
-                duration: 0.5,
-                ease:     "easeOut",
+                delay:    0.15 + i * 0.08,
+                duration: 0.8,
+                ease:     [0.16, 1, 0.3, 1],
               }}
               className="mr-[0.22em] inline-block"
             >
@@ -62,34 +63,47 @@ export function HeroSection() {
         </h1>
 
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
-          className="mt-6 font-body text-base leading-relaxed text-white"
-          style={{ maxWidth: "44ch", lineHeight: 1.65 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 max-w-[44ch] font-body text-white/80"
+          style={{ lineHeight: 1.65 }}
         >
           We give brands physical weight, spatial presence, and the kind of
           form that stops people mid-scroll.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.5, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mt-10"
         >
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-2.5 font-body text-xs font-medium uppercase tracking-widest text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-black"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-3.5 font-body text-[0.875rem] font-medium uppercase tracking-[0.12em] text-white transition-all duration-[350ms] hover:border-white hover:bg-white hover:text-black focus-visible:outline-2 focus-visible:outline-white"
           >
             View Our Work
             <ArrowUpRight
-              size={12}
+              size={13}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </Link>
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 0.6, ease: "easeOut" }}
+        aria-hidden="true"
+        className="absolute bottom-8 right-6 md:right-10"
+      >
+        <div className="flex h-10 w-[1px] flex-col items-center overflow-hidden">
+          <div className="h-3 w-[1px] flex-shrink-0 animate-scroll-dot bg-white/50" />
+        </div>
+      </motion.div>
     </section>
   );
 }

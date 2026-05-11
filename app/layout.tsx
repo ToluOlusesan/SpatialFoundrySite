@@ -7,14 +7,14 @@ import { Footer } from "@/components/layout/Footer";
 const outfit = Outfit({
   subsets:  ["latin"],
   variable: "--font-outfit",
-  weight:   ["500", "600", "700", "800"],
+  weight:   ["700", "800", "900"],
   display:  "swap",
 });
 
 const workSans = Work_Sans({
   subsets:  ["latin"],
   variable: "--font-work-sans",
-  weight:   ["400", "500"],
+  weight:   ["300", "400", "500", "600"],
   display:  "swap",
 });
 

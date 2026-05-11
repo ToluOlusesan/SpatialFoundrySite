@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,17 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Theme tokens — flip via .dark on <html>. All accept alpha: text-fg/55, border-line/30.
-        bg:      "rgb(var(--bg) / <alpha-value>)",
-        fg:      "rgb(var(--fg) / <alpha-value>)",
-        muted:   "rgb(var(--muted) / <alpha-value>)",
-        line:    "rgb(var(--line) / <alpha-value>)",
-        surface: "rgb(var(--surface) / <alpha-value>)",
+        bg:        "rgb(var(--bg) / <alpha-value>)",
+        fg:        "rgb(var(--fg) / <alpha-value>)",
+        surface:   "rgb(var(--surface) / <alpha-value>)",
+        "surface-2": "rgb(var(--surface-2) / <alpha-value>)",
+        accent:    "rgb(var(--accent) / <alpha-value>)",
+        line:      "rgb(var(--line) / <alpha-value>)",
       },
       fontFamily: {
-        // Outfit — headings, display text (weights 500–800)
         display: ["var(--font-outfit)", "sans-serif"],
-        // Work Sans — body, labels, eyebrows, captions (weights 400–500)
         body:    ["var(--font-work-sans)", "sans-serif"],
       },
       letterSpacing: {

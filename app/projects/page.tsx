@@ -12,14 +12,14 @@ export default function ProjectsPage() {
   return (
     <>
       {/* Page header */}
-      <section className="pb-16 pt-32 md:pb-20 md:pt-40 lg:pt-48">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="pb-16 pt-36 md:pb-24 md:pt-48">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <RevealOnScroll>
-            <span className="eyebrow mb-6 block">— 02 / Work</span>
+            <span className="eyebrow accent-bar mb-8 block">Work</span>
           </RevealOnScroll>
           <RevealOnScroll delay={0.08}>
             <h1
-              className="font-display mb-5 font-bold text-fg"
+              className="font-display font-bold text-fg"
               style={{
                 fontSize:      "clamp(3rem, 6vw, 5.5rem)",
                 letterSpacing: "-0.03em",
@@ -29,9 +29,9 @@ export default function ProjectsPage() {
               Projects
             </h1>
           </RevealOnScroll>
-          <RevealOnScroll delay={0.13}>
+          <RevealOnScroll delay={0.14}>
             <p
-              className="font-body text-base leading-relaxed text-fg"
+              className="mt-5 font-body text-fg/60"
               style={{ maxWidth: "50ch", lineHeight: 1.65 }}
             >
               A selection of spatial identity work across 3D branding, icon
@@ -42,8 +42,8 @@ export default function ProjectsPage() {
       </section>
 
       {/* Projects grid */}
-      <section className="pb-16 pt-12 md:pb-20 md:pt-16 lg:pb-[120px]">
-        <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+      <section className="pb-24 pt-8 md:pb-32 md:pt-12">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <ProjectsGrid />
         </div>
       </section>

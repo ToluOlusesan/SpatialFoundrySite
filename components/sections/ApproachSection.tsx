@@ -34,16 +34,18 @@ export function ApproachSection() {
   const active = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section className="py-16 md:py-20 lg:py-[120px]">
-      <div className="mx-auto max-w-[1280px] px-6 md:px-12">
+    <section className="py-24 md:py-32">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+
         {/* Section header */}
         <RevealOnScroll className="mb-14">
+          <span className="eyebrow accent-bar mb-4 block">The Method</span>
           <h2
             className="font-display font-bold text-fg"
             style={{
-              fontSize:      "clamp(1.75rem, 3vw, 2.75rem)",
-              letterSpacing: "-0.015em",
-              lineHeight:    1.15,
+              fontSize:      "clamp(2rem, 3.5vw, 3rem)",
+              letterSpacing: "-0.02em",
+              lineHeight:    1.1,
             }}
           >
             The Spatial Foundry Method
@@ -52,10 +54,9 @@ export function ApproachSection() {
 
         {/* Two-column split */}
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-          {/* Left panel — tab list without dividers.
-              Active state is carried by (a) filled number badge and
-              (b) soft surface panel + full-opacity copy. */}
-          <div className="flex flex-col gap-2 lg:col-span-5">
+
+          {/* Left: tab list */}
+          <div className="flex flex-col gap-1 lg:col-span-5">
             {tabs.map((tab) => {
               const isActive = tab.id === activeTab;
               return (
@@ -63,26 +64,33 @@ export function ApproachSection() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   aria-pressed={isActive}
-                  className={`group relative flex items-start gap-5 rounded-2xl px-5 py-5 text-left transition-all duration-300 ${
-                    isActive ? "bg-fg/[0.04]" : "hover:bg-fg/[0.02]"
-                  }`}
+                  className={[
+                    "group relative flex items-start gap-5 rounded-2xl px-5 py-5 text-left",
+                    "transition-all duration-[350ms]",
+                    isActive ? "bg-fg/[0.04]" : "hover:bg-fg/[0.02]",
+                  ].join(" ")}
                 >
-                  {/* Number badge — inverts to filled fg when active */}
+                  {/* Number badge */}
                   <span
-                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-body text-xs font-medium tracking-widest transition-all duration-300 ${
+                    className={[
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
+                      "font-body text-[11px] font-medium tracking-widest transition-all duration-300",
                       isActive
                         ? "bg-fg text-bg"
-                        : "border border-fg/15 text-fg group-hover:border-fg/30 group-hover:text-fg"
-                    }`}
+                        : "border border-fg/15 text-fg/50 group-hover:border-fg/30 group-hover:text-fg/80",
+                    ].join(" ")}
                   >
                     {tab.number}
                   </span>
 
                   <div className="flex-1 pt-1.5">
                     <span
-                      className={`block font-display font-bold leading-tight transition-colors duration-300 ${
-                        isActive ? "text-fg" : "text-fg group-hover:text-fg"
-                      }`}
+                      className={[
+                        "block font-display font-bold leading-tight transition-colors duration-200",
+                        isActive
+                          ? "text-fg"
+                          : "text-fg/55 group-hover:text-accent",
+                      ].join(" ")}
                       style={{
                         fontSize:      "clamp(1.125rem, 1.8vw, 1.375rem)",
                         letterSpacing: "-0.01em",
@@ -98,8 +106,8 @@ export function ApproachSection() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{    opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                          className="mt-3 overflow-hidden font-body text-sm leading-relaxed text-fg"
+                          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                          className="mt-3 overflow-hidden font-body text-sm text-fg/65"
                           style={{ lineHeight: 1.65 }}
                         >
                           {tab.copy}
@@ -112,7 +120,7 @@ export function ApproachSection() {
             })}
           </div>
 
-          {/* Right panel — swappable render */}
+          {/* Right: swappable render */}
           <div className="lg:col-span-7">
             <AnimatePresence mode="wait">
               <motion.div
@@ -131,6 +139,7 @@ export function ApproachSection() {
               </motion.div>
             </AnimatePresence>
           </div>
+
         </div>
       </div>
     </section>
