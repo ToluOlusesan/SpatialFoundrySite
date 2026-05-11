@@ -31,7 +31,7 @@ function ProjectCard({ slug, label, sub, tags, image }: Project) {
         whileHover={{ scale: 1.005 }}
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-        style={{ aspectRatio: "16/9" }}
+        style={{ aspectRatio: "12/5" }}
       >
         {image && (
           <Image
@@ -45,34 +45,34 @@ function ProjectCard({ slug, label, sub, tags, image }: Project) {
           />
         )}
 
-        {/* Resting label scrim — always shown subtly, intensifies on hover */}
+        {/* Resting bottom scrim */}
         <div
           aria-hidden="true"
           className="absolute inset-0 z-[5] opacity-90 transition-opacity duration-300 group-hover:opacity-100"
           style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.18) 38%, transparent 62%)" }}
         />
 
-        {/* Hover arrow — solid white circle, top-right */}
+        {/* Hover arrow */}
         <div className="absolute right-5 top-5 z-20 translate-y-1 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-black shadow-lg">
-            <ArrowUpRight size={16} />
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-lg">
+            <ArrowUpRight size={15} />
           </div>
         </div>
 
         {/* Resting label */}
-        <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col gap-2 p-7 md:flex-row md:items-end md:justify-between md:gap-8 md:p-9 lg:p-10">
+        <div className="absolute bottom-0 left-0 right-0 z-20 flex flex-col gap-1.5 p-6 md:flex-row md:items-end md:justify-between md:gap-8 md:p-7 lg:p-8">
           <div>
             <p className="font-body text-[11px] font-medium uppercase tracking-[0.18em] text-white/65">
               {tags}
             </p>
             <p
-              className="font-display mt-2 font-bold leading-[0.95] text-white"
-              style={{ fontSize: "clamp(1.75rem, 3.5vw, 3rem)", letterSpacing: "-0.025em" }}
+              className="font-display mt-1.5 font-bold leading-[0.95] text-white"
+              style={{ fontSize: "clamp(1.5rem, 2.6vw, 2.25rem)", letterSpacing: "-0.025em" }}
             >
               {label}
             </p>
           </div>
-          <p className="font-body text-fg/85 md:max-w-[28ch] md:text-right" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)" }}>
+          <p className="font-body text-white/85 md:max-w-[26ch] md:text-right" style={{ fontSize: "clamp(0.875rem, 1vw, 1rem)" }}>
             {sub}
           </p>
         </div>
