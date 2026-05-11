@@ -108,3 +108,58 @@ body {
 @layer utilities {
   .text-balance { text-wrap: balance; }
 }
+
+/* =========================================================================
+   Lava / molten-metal hero blobs
+   Six independently-drifting radial gradients create the fluid magma look.
+   Reduced-motion users get static blobs (no transforms).
+   ========================================================================= */
+.lava-blob {
+  position:      absolute;
+  border-radius: 9999px;
+}
+
+@keyframes lava-drift-1 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
+  33%       { transform: translate(7%,  -11%)  scale(1.07); }
+  66%       { transform: translate(-5%,  8%)   scale(0.95); }
+}
+@keyframes lava-drift-2 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
+  40%       { transform: translate(-11%, 14%)  scale(1.1);  }
+  70%       { transform: translate(7%,  -7%)   scale(0.93); }
+}
+@keyframes lava-drift-3 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
+  35%       { transform: translate(9%,  -9%)   scale(1.06); }
+  65%       { transform: translate(-7%,  6%)   scale(1.09); }
+}
+@keyframes lava-drift-4 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    opacity: 0.8; }
+  50%       { transform: translate(-14%, 18%)  scale(1.22); opacity: 1;   }
+}
+@keyframes lava-drift-5 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
+  45%       { transform: translate(12%,  -6%)  scale(1.08); }
+  80%       { transform: translate(-6%,  10%)  scale(0.94); }
+}
+@keyframes lava-drift-6 {
+  0%, 100% { transform: translate(0%,   0%)   scale(1);    }
+  50%       { transform: translate(8%,  -14%)  scale(1.12); }
+}
+
+.lava-drift-1 { animation: lava-drift-1 13s ease-in-out infinite; }
+.lava-drift-2 { animation: lava-drift-2 17s ease-in-out infinite; }
+.lava-drift-3 { animation: lava-drift-3 20s ease-in-out infinite; }
+.lava-drift-4 { animation: lava-drift-4  9s ease-in-out infinite; }
+.lava-drift-5 { animation: lava-drift-5 23s ease-in-out infinite; }
+.lava-drift-6 { animation: lava-drift-6 15s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .lava-drift-1,
+  .lava-drift-2,
+  .lava-drift-3,
+  .lava-drift-4,
+  .lava-drift-5,
+  .lava-drift-6 { animation: none; }
+}
