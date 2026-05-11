@@ -24,14 +24,6 @@ const featuredProjects: ProjectCard[] = [
     render: "[ MeshKit — Hero Render ]",
     image:  "/images/meshkit.png",
   },
-  {
-    slug:   "therapysuite",
-    label:  "TherapySuite",
-    sub:    "Brand Worldbuilding for Group Therapy",
-    tags:   "3D Branding · Identity System · Environments",
-    render: "[ TherapySuite — Brand World ]",
-    image:  "/images/therapysuite.png",
-  },
 ];
 
 function ProjectCard({ slug, label, sub, tags, render, image }: ProjectCard) {

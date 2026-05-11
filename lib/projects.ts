@@ -18,15 +18,6 @@ export const projects: Project[] = [
     scope:       ["3D Modelling", "Icon System Design", "Launch Motion Film", "Web Illustrations"],
     year:        "2025",
   },
-  {
-    slug:        "therapysuite",
-    title:       "TherapySuite",
-    subtitle:    "Brand Worldbuilding for Group Therapy",
-    tags:        ["3D Branding", "Identity System", "Environments", "Motion"],
-    description: "A full spatial brand system for Group Therapy — a Pan-African rave and event brand. Built around two hero brand objects (the Monolith and the Frequency Object), a 40-piece icon system, and a set of immersive 3D environments designed to carry the brand across digital and physical touchpoints.",
-    scope:       ["Brand Objects", "Icon System", "3D Environments", "Posters", "Motion Film", "Showcase Site"],
-    year:        "2025",
-  },
 ];
 
 export function getProject(slug: string): Project | undefined {

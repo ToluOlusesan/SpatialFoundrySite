@@ -27,23 +27,23 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
 }
 
 const navLinks = [
-  { href: "/",         label: "Home" },
-  { href: "/projects", label: "Work" },
+  { href: "/",         label: "Home"  },
+  { href: "/projects", label: "Work"  },
   { href: "/about",    label: "About" },
 ];
 
 const socialLinks = [
   { href: "https://instagram.com/spatialfoundry", label: "Instagram", Icon: InstagramIcon },
-  { href: "https://linkedin.com",                 label: "LinkedIn",  Icon: LinkedinIcon },
+  { href: "https://linkedin.com",                 label: "LinkedIn",  Icon: LinkedinIcon  },
 ];
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled]   = useState(false);
-  const pathname                   = usePathname();
+  const [scrolled, setScrolled]  = useState(false);
+  const pathname                  = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -57,21 +57,20 @@ export function Navbar() {
 
   return (
     <>
-      {/* Full-width fixed header — h-16, frosted glass backdrop */}
-      <header
-        className="fixed inset-x-0 top-0 z-50 h-16 transition-all duration-300"
-        style={{
-          backdropFilter:       "blur(14px) saturate(160%)",
-          WebkitBackdropFilter: "blur(14px) saturate(160%)",
-          backgroundColor: scrolled
-            ? `rgba(250, 250, 249, 0.95)`
-            : `rgba(250, 250, 249, 0.88)`,
-          borderBottom: scrolled ? "1px solid rgb(13 13 12 / 0.08)" : "1px solid transparent",
-        }}
-      >
-        <nav className="mx-auto flex h-full max-w-[1400px] items-center justify-between px-6 md:px-10">
-
-          {/* Left: Logo — white PNG asset, inverted for light background */}
+      {/* Floating pill navbar */}
+      <div className="fixed left-1/2 top-5 z-50 w-[calc(100%-48px)] max-w-[1100px] -translate-x-1/2">
+        <nav
+          className="relative flex items-center justify-between gap-4 rounded-full border border-fg/10 px-4 py-2.5 md:px-5"
+          style={{
+            backdropFilter:       "blur(16px) saturate(140%)",
+            WebkitBackdropFilter: "blur(16px) saturate(140%)",
+            backgroundColor: scrolled
+              ? "rgb(var(--bg) / 0.92)"
+              : "rgb(var(--bg) / 0.6)",
+            transition: "background-color 0.3s ease",
+          }}
+        >
+          {/* Left: Logo */}
           <Link href="/" aria-label="Spatial Foundry — Home" className="shrink-0">
             <Image
               src="/logo/logo/logo-white.png"
@@ -84,7 +83,7 @@ export function Navbar() {
           </Link>
 
           {/* Center: nav links — absolutely centered */}
-          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center md:flex">
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -92,11 +91,9 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={[
-                    "relative px-4 py-2 font-body text-[11px] font-medium uppercase tracking-[0.12em]",
+                    "relative px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-[0.12em]",
                     "transition-colors duration-200",
-                    isActive
-                      ? "text-accent"
-                      : "text-fg/55 hover:text-fg",
+                    isActive ? "text-accent" : "text-fg/55 hover:text-fg",
                   ].join(" ")}
                 >
                   {link.label}
@@ -111,11 +108,11 @@ export function Navbar() {
             })}
           </div>
 
-          {/* Right: Contact pill + Menu button */}
-          <div className="flex shrink-0 items-center gap-2.5">
+          {/* Right: Contact + Menu */}
+          <div className="flex shrink-0 items-center gap-2">
             <Link
               href="/contact"
-              className="hidden rounded-full border border-fg/15 px-5 py-2 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-300 hover:border-fg/25 hover:bg-surface sm:inline-flex focus-visible:outline-2 focus-visible:outline-accent"
+              className="hidden rounded-full border border-fg/15 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-300 hover:border-fg/25 hover:bg-surface sm:inline-flex"
             >
               Contact
             </Link>
@@ -124,12 +121,12 @@ export function Navbar() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
-              className="flex items-center gap-2 rounded-full border border-fg/15 px-5 py-2 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-200 hover:border-fg/25 hover:bg-surface focus-visible:outline-2 focus-visible:outline-accent"
+              className="flex items-center gap-2 rounded-full border border-fg/15 px-4 py-1.5 font-body text-[11px] font-medium uppercase tracking-widest text-fg transition-all duration-200 hover:border-fg/25 hover:bg-surface"
             >
               {menuOpen ? "Close" : "Menu"}
               <span
                 aria-hidden="true"
-                className="font-body text-base leading-none transition-transform duration-300"
+                className="text-base leading-none transition-transform duration-300"
                 style={{ display: "inline-block", transform: menuOpen ? "rotate(45deg)" : "rotate(0deg)" }}
               >
                 +
@@ -137,7 +134,7 @@ export function Navbar() {
             </button>
           </div>
         </nav>
-      </header>
+      </div>
 
       {/* Full-screen menu overlay */}
       <AnimatePresence>
@@ -147,7 +144,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{    opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-12 pt-20 md:px-10 lg:px-16"
+            className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-12 pt-24 md:px-10 lg:px-16"
           >
             {/* Nav links */}
             <nav className="flex flex-1 flex-col justify-center">
@@ -171,7 +168,7 @@ export function Navbar() {
                         <span
                           className={[
                             "font-display font-bold leading-none transition-colors duration-300",
-                            isActive ? "text-accent" : "text-fg group-hover:text-fg",
+                            isActive ? "text-accent" : "text-fg",
                           ].join(" ")}
                           style={{
                             fontSize:      "clamp(2.5rem, 8vw, 6rem)",
@@ -197,7 +194,7 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Social links + location */}
+            {/* Social + location */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
