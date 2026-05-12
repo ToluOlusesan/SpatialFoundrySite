@@ -32,6 +32,7 @@ function BehanceIcon({ size = 16 }: { size?: number }) {
 const navLinks = [
   { href: "/",         label: "Home"    },
   { href: "/projects", label: "Work"    },
+  { href: "/culture",  label: "Culture" },
   { href: "/about",    label: "Studio"  },
   { href: "/contact",  label: "Contact" },
 ];

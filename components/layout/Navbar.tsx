@@ -27,9 +27,10 @@ function LinkedinIcon({ size = 14 }: { size?: number }) {
 }
 
 const navLinks = [
-  { href: "/",         label: "Home"  },
-  { href: "/projects", label: "Work"  },
-  { href: "/about",    label: "About" },
+  { href: "/",         label: "Home"    },
+  { href: "/projects", label: "Work"    },
+  { href: "/culture",  label: "Culture" },
+  { href: "/about",    label: "About"   },
 ];
 
 const socialLinks = [
