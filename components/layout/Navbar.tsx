@@ -90,9 +90,9 @@ export function Navbar() {
                     key={link.href}
                     href={link.href}
                     className={[
-                      "relative px-3.5 py-1.5 font-body text-[15px] font-medium",
+                      "relative px-3.5 py-1.5 font-body text-[15px] font-semibold",
                       "transition-colors duration-200",
-                      isActive ? "text-accent" : "text-fg/85 hover:text-fg",
+                      isActive ? "text-accent" : "text-fg hover:text-accent",
                     ].join(" ")}
                   >
                     {link.label}
@@ -109,7 +109,7 @@ export function Navbar() {
 
             <Link
               href="/contact"
-              className="hidden px-3.5 py-1.5 font-body text-[15px] font-medium text-fg/85 transition-colors hover:text-fg sm:inline-flex"
+              className="hidden px-3.5 py-1.5 font-body text-[15px] font-semibold text-fg transition-colors hover:text-accent sm:inline-flex"
             >
               Contact
             </Link>

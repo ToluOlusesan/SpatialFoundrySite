@@ -6,29 +6,29 @@ import { CTASection } from "@/components/sections/CTASection";
 export const metadata: Metadata = {
   title:       "Culture — Spatial Foundry",
   description:
-    "3D design from a distinctly African lens. Studio explorations that reinterpret heritage geometries, patterns, and materials in three dimensions.",
+    "3D design from a distinctly Nigerian lens. Studio explorations that reinterpret heritage patterns, symbols, and materials — from Adire and Nsibidi to Benin bronze and Hausa adobe — in three dimensions.",
 };
 
 const explorations = [
   {
     title:  "Adire",
-    sub:    "Resist patterns, in three dimensions",
-    body:   "What happens when indigo-resist logic becomes a surface system — modulated across curvature, depth, and light instead of laid flat across cloth?",
+    sub:    "Yoruba indigo resist, in three dimensions",
+    body:   "What happens when Adire's resist logic stops behaving like cloth — and starts behaving like a surface system? We study how the pattern modulates across curvature, depth, and light instead of laying flat.",
   },
   {
-    title:  "Adinkra",
-    sub:    "Symbols, given mass",
-    body:   "Each Adinkra glyph carries a concept. We treat them as volumes — letting weight, undercut, and material communicate the meaning the line drawing implies.",
+    title:  "Nsibidi",
+    sub:    "Igbo pictograms, given mass",
+    body:   "Nsibidi compresses meaning into mark. We treat each glyph as a volume — letting weight, undercut, and material communicate what the line drawing only implies, and building system-ready icon families from the source.",
   },
   {
     title:  "Benin & Ife",
-    sub:    "From brass to render",
-    body:   "The casting traditions of Benin and Ife are already a 3D language. We study how their proportions and surface treatment translate into digital materiality.",
+    sub:    "From brass casting to digital render",
+    body:   "Benin and Ife perfected a 3D language centuries before the word existed. We study how their proportions, surface treatment, and patina translate into digital materiality without losing what made the originals authoritative.",
   },
   {
-    title:  "Sahel",
+    title:  "Hausa adobe",
     sub:    "Architecture as identity",
-    body:   "Mud, palm-wood beams, and earth pigment. The buildings of the Sahel solve form-and-shadow problems we&apos;re still asking in 3D today.",
+    body:   "The mud facades of Kano and Zaria — geometric, layered, shadow-driven — already solve form-and-light problems we're still asking in 3D today. We model them as systems, not references.",
   },
 ];
 
@@ -61,12 +61,12 @@ export default function CulturePage() {
               style={{
                 fontSize:   "clamp(1.0625rem, 1.4vw, 1.3125rem)",
                 lineHeight: 1.6,
-                maxWidth:   "52ch",
+                maxWidth:   "54ch",
               }}
             >
-              3D design from a distinctly African lens — work and explorations that
-              reimagine the medium from our culture, and reinterpret culture in
-              three dimensions.
+              3D design from a distinctly Nigerian lens — work and explorations
+              that reimagine the medium from our culture, and reinterpret our
+              culture in three dimensions.
             </p>
           </RevealOnScroll>
         </div>
@@ -105,12 +105,13 @@ export default function CulturePage() {
                 >
                   We don&apos;t import a visual language and translate it. Spatial
                   Foundry works from a different premise — that the geometries,
-                  proportions, and mass encoded in African design traditions are
-                  themselves world-class material for the spatial era. Adire&apos;s
-                  resist patterns. Adinkra&apos;s compressed symbols. Bògòlanfini&apos;s
-                  earth-stained grids. The brass casts of Benin and Ife. Yoruba
-                  beadwork. Sahel adobe. These aren&apos;t motifs to sprinkle into a
-                  render — they&apos;re starting points for entire systems.
+                  proportions, and mass encoded in Nigerian design traditions are
+                  themselves world-class material for the spatial era.
+                  Adire&apos;s indigo-resist patterns. Nsibidi&apos;s compressed
+                  pictograms. The bronze casts of Benin and Ife. Yoruba beadwork.
+                  Hausa adobe geometry. Uli linework. Aso Oke handweave. These
+                  aren&apos;t motifs to sprinkle into a render — they&apos;re
+                  starting points for entire systems.
                 </p>
               </RevealOnScroll>
 
@@ -226,10 +227,10 @@ export default function CulturePage() {
                 fontSize:      "clamp(1.75rem, 3.2vw, 2.75rem)",
                 letterSpacing: "-0.02em",
                 lineHeight:    1.15,
-                maxWidth:      "28ch",
+                maxWidth:      "30ch",
               }}
             >
-              We&apos;re building a 3D vocabulary that starts here — and travels well.
+              A 3D vocabulary that starts in Nigeria — and travels well.
             </p>
           </RevealOnScroll>
         </div>
