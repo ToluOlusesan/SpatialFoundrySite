@@ -63,14 +63,6 @@ export const projects: Project[] = [
         title: "The Brief",
         body:  "3D icons live in an awkward middle. Most are either rendered showpieces too heavy for product use, or thin extrusions of flat icons that lose their detail at the sizes that matter. We wanted a single library that did neither — designed from the start for both product chrome and brand moments, in the same file.",
       },
-      {
-        title: "The Approach",
-        body:  "We treated MeshKit as a system, not a set. Every icon shares the same underlying geometry rules: rounded chamfers, a fixed depth ratio, a single light direction. The library reads as one family because the constraints make it one — not because we hand-applied a style after the fact.",
-      },
-      {
-        title: "The System",
-        body:  "Each icon is delivered in three states. A stripped product variant — clean silhouette, neutral material. A marketing variant — full material expression, brand-aligned colour. A motion variant — a 1.5-second loop, exported at 60fps. One source file. Three lives. The same form throughout.",
-      },
     ],
 
     pillars: [

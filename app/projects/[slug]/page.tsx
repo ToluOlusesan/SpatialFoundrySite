@@ -301,20 +301,23 @@ export default function ProjectPage({ params }: Params) {
               <span className="eyebrow accent-bar">Credits</span>
             </RevealOnScroll>
 
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {project.credits.map((credit, i) => (
-                <RevealOnScroll key={credit.role} delay={i * 0.05}>
-                  <div className="flex items-baseline justify-between gap-6 border-t border-line py-5">
-                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-fg/55">
+            <RevealOnScroll>
+              <dl className="border-t border-line">
+                {project.credits.map((credit) => (
+                  <div
+                    key={credit.role}
+                    className="grid grid-cols-12 items-baseline gap-6 border-b border-line py-5"
+                  >
+                    <dt className="col-span-12 font-body text-[12px] font-semibold uppercase tracking-[0.18em] text-fg/55 md:col-span-4">
                       {credit.role}
-                    </span>
-                    <span className="font-body font-medium text-fg" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)" }}>
+                    </dt>
+                    <dd className="col-span-12 font-body font-medium text-fg md:col-span-8" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)" }}>
                       {credit.name}
-                    </span>
+                    </dd>
                   </div>
-                </RevealOnScroll>
-              ))}
-            </div>
+                ))}
+              </dl>
+            </RevealOnScroll>
 
           </div>
         </section>
