@@ -47,57 +47,34 @@ export default function ProjectPage({ params }: Params) {
             </Link>
           </RevealOnScroll>
 
-          {/* Top media: launch film if present, otherwise the hero image, otherwise a placeholder */}
-          <RevealOnScroll delay={0.06}>
-            {project.launchFilm ? (
-              <div>
-                <div className="mb-3 flex items-center gap-3">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                  <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-fg/65">
-                    Launch Film
-                  </span>
-                </div>
+          {/* Top media — only renders when there's no launch film. Films sit
+              between the header and the lead, so we skip the top hero in that case. */}
+          {!project.launchFilm && (
+            <RevealOnScroll delay={0.06}>
+              {project.heroImage ? (
                 <div
-                  className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                  style={{ aspectRatio: "16/9" }}
+                  className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                  style={{ aspectRatio: "21/9" }}
                 >
-                  <video
-                    src={project.launchFilm.src}
-                    poster={project.launchFilm.poster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    controls
-                    preload="metadata"
-                    className="absolute inset-0 h-full w-full object-cover"
-                    aria-label={`${project.title} — Launch Film`}
+                  <Image
+                    src={project.heroImage}
+                    alt={project.title}
+                    fill
+                    priority
+                    sizes="100vw"
+                    quality={92}
+                    className="object-cover object-center"
                   />
                 </div>
-              </div>
-            ) : project.heroImage ? (
-              <div
-                className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                style={{ aspectRatio: "21/9" }}
-              >
-                <Image
-                  src={project.heroImage}
-                  alt={project.title}
-                  fill
-                  priority
-                  sizes="100vw"
-                  quality={92}
-                  className="object-cover object-center"
+              ) : (
+                <PlaceholderRender
+                  label={`[ ${project.title} — Hero Render ]`}
+                  aspectRatio="21/9"
+                  className="w-full"
                 />
-              </div>
-            ) : (
-              <PlaceholderRender
-                label={`[ ${project.title} — Hero Render ]`}
-                aspectRatio="21/9"
-                className="w-full"
-              />
-            )}
-          </RevealOnScroll>
+              )}
+            </RevealOnScroll>
+          )}
         </div>
       </section>
 
@@ -185,6 +162,39 @@ export default function ProjectPage({ params }: Params) {
           </div>
         </div>
       </section>
+
+      {/* ── Launch film — sits between header and lead ── */}
+      {project.launchFilm && (
+        <section className="px-6 pb-20 md:px-10 md:pb-24">
+          <div className="mx-auto max-w-[1400px]">
+            <RevealOnScroll>
+              <div className="mb-3 flex items-center gap-3">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-fg/65">
+                  Launch Film
+                </span>
+              </div>
+              <div
+                className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <video
+                  src={project.launchFilm.src}
+                  poster={project.launchFilm.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  aria-label={`${project.title} — Launch Film`}
+                />
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
 
       {/* ── Lead paragraph ── */}
       {project.lead && (
