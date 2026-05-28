@@ -23,6 +23,7 @@ export interface ProjectGalleryItem {
   label:       string;
   aspectRatio: string;
   image?:      string;
+  featured?:   boolean;   // renders full-width in the gallery grid
 }
 
 export interface ProjectIcon {
@@ -71,7 +72,6 @@ export const projects: Project[] = [
     description: "A curated library of minimal 3D icons designed for product UI, marketing, and motion use. MeshKit bridges the gap between flat icon systems and the spatial design direction modern product brands are moving toward.",
     scope:       ["3D Modelling", "Icon System Design", "Launch Motion Film", "Web Illustrations"],
     year:        "2025",
-    heroImage:   "/images/meshkit/cover.png",
     launchFilm:  { src: "/videos/meshkitlaunchfilm.mp4", poster: "/images/meshkit/cover.png" },
     website:     { url: "https://meshkit.design", label: "meshkit.design" },
 
@@ -116,9 +116,10 @@ export const projects: Project[] = [
     ],
 
     gallery: [
-      { label: "Icon render — study frame 038", aspectRatio: "4/3", image: "/images/meshkit/0038.png" },
-      { label: "Icon render — study frame 188", aspectRatio: "4/3", image: "/images/meshkit/0188.png" },
-      { label: "Launch announcement template",  aspectRatio: "4/3", image: "/images/meshkit/Announcement Template.png" },
+      { label: "Cover render",                  aspectRatio: "21/9", image: "/images/meshkit/cover.png",               featured: true },
+      { label: "Icon render — study frame 038", aspectRatio: "4/3",  image: "/images/meshkit/0038.png"                                 },
+      { label: "Icon render — study frame 188", aspectRatio: "4/3",  image: "/images/meshkit/0188.png"                                 },
+      { label: "Launch announcement template",  aspectRatio: "4/3",  image: "/images/meshkit/Announcement Template.png"                },
     ],
 
     icons: [

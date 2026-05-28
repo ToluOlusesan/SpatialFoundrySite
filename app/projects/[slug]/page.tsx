@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PlaceholderRender } from "@/components/ui/PlaceholderRender";
+import { ExpandableImage } from "@/components/ui/ExpandableImage";
 import { projects, getProject } from "@/lib/projects";
 
 interface Params {
@@ -46,8 +47,35 @@ export default function ProjectPage({ params }: Params) {
             </Link>
           </RevealOnScroll>
 
+          {/* Top media: launch film if present, otherwise the hero image, otherwise a placeholder */}
           <RevealOnScroll delay={0.06}>
-            {project.heroImage ? (
+            {project.launchFilm ? (
+              <div>
+                <div className="mb-3 flex items-center gap-3">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                  <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-fg/65">
+                    Launch Film
+                  </span>
+                </div>
+                <div
+                  className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                  style={{ aspectRatio: "16/9" }}
+                >
+                  <video
+                    src={project.launchFilm.src}
+                    poster={project.launchFilm.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover"
+                    aria-label={`${project.title} — Launch Film`}
+                  />
+                </div>
+              </div>
+            ) : project.heroImage ? (
               <div
                 className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
                 style={{ aspectRatio: "21/9" }}
@@ -72,39 +100,6 @@ export default function ProjectPage({ params }: Params) {
           </RevealOnScroll>
         </div>
       </section>
-
-      {/* ── Launch film ── */}
-      {project.launchFilm && (
-        <section className="px-6 pt-5 md:px-10 md:pt-6">
-          <div className="mx-auto max-w-[1400px]">
-            <RevealOnScroll>
-              <div className="mb-3 flex items-center gap-3">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-fg/65">
-                  Launch Film
-                </span>
-              </div>
-              <div
-                className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                style={{ aspectRatio: "16/9" }}
-              >
-                <video
-                  src={project.launchFilm.src}
-                  poster={project.launchFilm.poster}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="metadata"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  aria-label={`${project.title} — Launch Film`}
-                />
-              </div>
-            </RevealOnScroll>
-          </div>
-        </section>
-      )}
 
       {/* ── Header: title + meta ── */}
       <section className="py-20 md:py-28">
@@ -232,22 +227,19 @@ export default function ProjectPage({ params }: Params) {
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
               {project.gallery.map((item, i) => (
-                <RevealOnScroll key={item.label} delay={i * 0.08}>
+                <RevealOnScroll
+                  key={item.label}
+                  delay={i * 0.08}
+                  className={item.featured ? "md:col-span-3" : ""}
+                >
                   {item.image ? (
                     <figure className="flex flex-col gap-3">
-                      <div
-                        className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                        style={{ aspectRatio: item.aspectRatio }}
-                      >
-                        <Image
-                          src={item.image}
-                          alt={item.label}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          quality={90}
-                          className="object-cover object-center"
-                        />
-                      </div>
+                      <ExpandableImage
+                        src={item.image}
+                        alt={item.label}
+                        aspectRatio={item.aspectRatio}
+                        sizes={item.featured ? "100vw" : "(max-width: 768px) 100vw, 33vw"}
+                      />
                       <figcaption className="font-body text-[12px] font-medium uppercase tracking-[0.16em] text-fg/55">
                         {item.label}
                       </figcaption>
@@ -330,18 +322,14 @@ export default function ProjectPage({ params }: Params) {
               {project.icons.map((icon, i) => (
                 <RevealOnScroll key={icon.name} delay={i * 0.04}>
                   <figure className="flex flex-col gap-3">
-                    <div
-                      className="relative aspect-square w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                    >
-                      <Image
-                        src={icon.image}
-                        alt={icon.name}
-                        fill
-                        sizes="(max-width: 640px) 50vw, 33vw"
-                        quality={90}
-                        className="object-contain object-center p-6 md:p-10"
-                      />
-                    </div>
+                    <ExpandableImage
+                      src={icon.image}
+                      alt={icon.name}
+                      aspectRatio="1/1"
+                      objectFit="contain"
+                      padded
+                      sizes="(max-width: 640px) 50vw, 33vw"
+                    />
                     <figcaption className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-fg/55">
                       {icon.name}
                     </figcaption>
