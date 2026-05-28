@@ -25,6 +25,11 @@ export interface ProjectGalleryItem {
   image?:      string;
 }
 
+export interface ProjectLink {
+  url:   string;
+  label: string;
+}
+
 export interface Project {
   slug:        string;
   title:       string;
@@ -36,6 +41,7 @@ export interface Project {
 
   /* Case-study fields — optional; page falls back gracefully when absent */
   heroImage?:  string;
+  website?:    ProjectLink;
   lead?:       string;
   sections?:   ProjectSection[];
   pillars?:    ProjectPillar[];
@@ -54,14 +60,15 @@ export const projects: Project[] = [
     scope:       ["3D Modelling", "Icon System Design", "Launch Motion Film", "Web Illustrations"],
     year:        "2025",
     heroImage:   "/images/meshkit.png",
+    website:     { url: "https://meshkit.design", label: "meshkit.design" },
 
     lead:
-      "Icon systems went from flat to fancy by accident. We built MeshKit to make the move on purpose — a 120-piece 3D icon library that holds up at 16px in a product UI, scales cleanly to a billboard render, and ships as motion the day it ships as a still.",
+      "Most 3D icon libraries are either too precious to ship or too flat to matter. MeshKit needed to be both production-ready and brand-flexible, live in the browser, at any scale. We built the geometry system, designed the identity through a 3D lens, developed the renderer that runs it all, and made a launch film worthy of the work.",
 
     sections: [
       {
         title: "The Brief",
-        body:  "3D icons live in an awkward middle. Most are either rendered showpieces too heavy for product use, or thin extrusions of flat icons that lose their detail at the sizes that matter. We wanted a single library that did neither — designed from the start for both product chrome and brand moments, in the same file.",
+        body:  "Most 3D icon packs ship in one fixed style — wrong colors, wrong material, wrong brand. MeshKit needed live, material-level color control across an entire library, in the browser, without sacrificing render quality. That meant building the geometry system, the renderer, and the customization logic from scratch. Alongside it: a visual identity developed through a 3D lens, where the brand language and the icons are the same thing, and a launch film that made the whole system feel alive before anyone had signed up.",
       },
     ],
 

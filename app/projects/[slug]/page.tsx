@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { RevealOnScroll } from "@/components/ui/RevealOnScroll";
 import { PlaceholderRender } from "@/components/ui/PlaceholderRender";
 import { projects, getProject } from "@/lib/projects";
@@ -107,6 +107,20 @@ export default function ProjectPage({ params }: Params) {
                   {project.subtitle}
                 </p>
               </RevealOnScroll>
+
+              {project.website && (
+                <RevealOnScroll delay={0.18}>
+                  <a
+                    href={project.website.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group mt-7 inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3 font-body text-[0.9375rem] font-semibold uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                  >
+                    Visit {project.website.label}
+                    <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                </RevealOnScroll>
+              )}
             </div>
 
             {/* Right: tags + scope */}
