@@ -167,9 +167,9 @@ export default function ProjectPage({ params }: Params) {
 
       {/* ── Case-study sections ── */}
       {project.sections && project.sections.length > 0 && (
-        <section className="py-24 md:py-32">
+        <section className="pb-20 pt-4 md:pb-24 md:pt-6">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-            <div className="flex flex-col gap-16 md:gap-20">
+            <div className="flex flex-col gap-10 md:gap-12">
               {project.sections.map((section, i) => (
                 <div key={section.title} className="grid grid-cols-12 gap-8 lg:gap-12">
                   <RevealOnScroll className="col-span-12 md:col-span-4">
@@ -204,55 +204,6 @@ export default function ProjectPage({ params }: Params) {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── Pillars grid ── */}
-      {project.pillars && project.pillars.length > 0 && (
-        <section className="py-24 md:py-32">
-          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-
-            <RevealOnScroll className="mb-14">
-              <span className="eyebrow accent-bar mb-4 block">The Pillars</span>
-              <h2
-                className="font-display font-bold text-fg"
-                style={{
-                  fontSize:      "clamp(2rem, 3.5vw, 3rem)",
-                  letterSpacing: "-0.02em",
-                  lineHeight:    1.1,
-                  maxWidth:      "20ch",
-                }}
-              >
-                Four constraints, one family.
-              </h2>
-            </RevealOnScroll>
-
-            <div className="grid grid-cols-1 gap-px bg-line md:grid-cols-2 lg:grid-cols-4">
-              {project.pillars.map((pillar, i) => (
-                <RevealOnScroll key={pillar.title} delay={i * 0.06}>
-                  <article className="flex h-full flex-col bg-bg p-8 transition-colors duration-[350ms] hover:bg-surface md:p-10">
-                    <span className="mb-7 font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-accent">
-                      {pillar.number}
-                    </span>
-                    <h3
-                      className="font-display mb-4 font-bold text-fg"
-                      style={{
-                        fontSize:      "clamp(1.5rem, 2vw, 1.75rem)",
-                        letterSpacing: "-0.015em",
-                        lineHeight:    1.15,
-                      }}
-                    >
-                      {pillar.title}
-                    </h3>
-                    <p className="font-body text-fg/80" style={{ fontSize: "clamp(0.9375rem, 1.1vw, 1.0625rem)", lineHeight: 1.65 }}>
-                      {pillar.body}
-                    </p>
-                  </article>
-                </RevealOnScroll>
-              ))}
-            </div>
-
           </div>
         </section>
       )}
@@ -305,15 +256,36 @@ export default function ProjectPage({ params }: Params) {
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {(project.gallery ?? [
-              { label: `[ ${project.title} — Render 01 ]`, aspectRatio: "4/3" },
-              { label: `[ ${project.title} — Render 02 ]`, aspectRatio: "4/3" },
-              { label: `[ ${project.title} — Render 03 ]`, aspectRatio: "4/3" },
+              { label: `${project.title} — Render 01`, aspectRatio: "4/3" },
+              { label: `${project.title} — Render 02`, aspectRatio: "4/3" },
+              { label: `${project.title} — Render 03`, aspectRatio: "4/3" },
             ]).map((item, i) => (
               <RevealOnScroll key={item.label} delay={i * 0.08}>
-                <PlaceholderRender
-                  label={`[ ${item.label} ]`}
-                  aspectRatio={item.aspectRatio}
-                />
+                {item.image ? (
+                  <figure className="flex flex-col gap-3">
+                    <div
+                      className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                      style={{ aspectRatio: item.aspectRatio }}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.label}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        quality={90}
+                        className="object-cover object-center"
+                      />
+                    </div>
+                    <figcaption className="font-body text-[12px] font-medium uppercase tracking-[0.16em] text-fg/55">
+                      {item.label}
+                    </figcaption>
+                  </figure>
+                ) : (
+                  <PlaceholderRender
+                    label={`[ ${item.label} ]`}
+                    aspectRatio={item.aspectRatio}
+                  />
+                )}
               </RevealOnScroll>
             ))}
           </div>

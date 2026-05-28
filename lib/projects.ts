@@ -22,6 +22,7 @@ export interface ProjectCredit {
 export interface ProjectGalleryItem {
   label:       string;
   aspectRatio: string;
+  image?:      string;
 }
 
 export interface Project {
@@ -110,9 +111,9 @@ export const projects: Project[] = [
     ],
 
     gallery: [
-      { label: "Icon family — full set overview", aspectRatio: "4/3" },
-      { label: "Material study — four variants",  aspectRatio: "4/3" },
-      { label: "Motion loop — 60fps preview",     aspectRatio: "4/3" },
+      { label: "Icon render — study frame 038", aspectRatio: "4/3", image: "/images/meshkit/0038.png" },
+      { label: "Icon render — study frame 188", aspectRatio: "4/3", image: "/images/meshkit/0188.png" },
+      { label: "Launch announcement template",  aspectRatio: "4/3", image: "/images/meshkit/Announcement Template.png" },
     ],
   },
 ];
