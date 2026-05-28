@@ -25,6 +25,11 @@ export interface ProjectGalleryItem {
   image?:      string;
 }
 
+export interface ProjectIcon {
+  name:  string;
+  image: string;
+}
+
 export interface ProjectLink {
   url:   string;
   label: string;
@@ -48,6 +53,7 @@ export interface Project {
   stats?:      ProjectStat[];
   credits?:    ProjectCredit[];
   gallery?:    ProjectGalleryItem[];
+  icons?:      ProjectIcon[];
 }
 
 export const projects: Project[] = [
@@ -59,7 +65,7 @@ export const projects: Project[] = [
     description: "A curated library of minimal 3D icons designed for product UI, marketing, and motion use. MeshKit bridges the gap between flat icon systems and the spatial design direction modern product brands are moving toward.",
     scope:       ["3D Modelling", "Icon System Design", "Launch Motion Film", "Web Illustrations"],
     year:        "2025",
-    heroImage:   "/images/meshkit.png",
+    heroImage:   "/images/meshkit/cover.png",
     website:     { url: "https://meshkit.design", label: "meshkit.design" },
 
     lead:
@@ -106,6 +112,18 @@ export const projects: Project[] = [
       { label: "Icon render — study frame 038", aspectRatio: "4/3", image: "/images/meshkit/0038.png" },
       { label: "Icon render — study frame 188", aspectRatio: "4/3", image: "/images/meshkit/0188.png" },
       { label: "Launch announcement template",  aspectRatio: "4/3", image: "/images/meshkit/Announcement Template.png" },
+    ],
+
+    icons: [
+      { name: "Calendar",     image: "/images/meshkit/icons/calendar.001.png"     },
+      { name: "Rocket",       image: "/images/meshkit/icons/Rocket.001.png"       },
+      { name: "Hourglass",    image: "/images/meshkit/icons/Hourglass.001.png"    },
+      { name: "Unlock",       image: "/images/meshkit/icons/Unlock.001.png"       },
+      { name: "Warning",      image: "/images/meshkit/icons/Warning.001.png"      },
+      { name: "Verification", image: "/images/meshkit/icons/Verification.001.png" },
+      { name: "Alert",        image: "/images/meshkit/icons/Alert.001.png"        },
+      { name: "Mic",          image: "/images/meshkit/icons/Mic.png"              },
+      { name: "Headphones",   image: "/images/meshkit/icons/Headphones.png"       },
     ],
   },
 ];

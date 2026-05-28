@@ -74,7 +74,7 @@ export default function ProjectPage({ params }: Params) {
       </section>
 
       {/* ── Header: title + meta ── */}
-      <section className="py-24 md:py-32">
+      <section className="py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
 
@@ -85,9 +85,9 @@ export default function ProjectPage({ params }: Params) {
               </RevealOnScroll>
               <RevealOnScroll delay={0.08}>
                 <h1
-                  className="font-display mb-5 font-bold text-fg"
+                  className="font-display mb-4 font-bold text-fg"
                   style={{
-                    fontSize:      "clamp(2.75rem, 5.4vw, 5rem)",
+                    fontSize:      "clamp(2.25rem, 4.4vw, 4rem)",
                     letterSpacing: "-0.03em",
                     lineHeight:    1.0,
                   }}
@@ -99,9 +99,9 @@ export default function ProjectPage({ params }: Params) {
                 <p
                   className="font-display font-bold text-fg/80"
                   style={{
-                    fontSize:      "clamp(1.125rem, 1.85vw, 1.5rem)",
+                    fontSize:      "clamp(1rem, 1.55vw, 1.25rem)",
                     letterSpacing: "-0.01em",
-                    lineHeight:    1.25,
+                    lineHeight:    1.3,
                   }}
                 >
                   {project.subtitle}
@@ -114,7 +114,7 @@ export default function ProjectPage({ params }: Params) {
                     href={project.website.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group mt-7 inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3 font-body text-[0.9375rem] font-semibold uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+                    className="group mt-7 inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3 font-body text-[0.875rem] font-semibold uppercase tracking-[0.12em] text-bg transition-all duration-[350ms] hover:bg-fg/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
                   >
                     Visit {project.website.label}
                     <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -160,16 +160,16 @@ export default function ProjectPage({ params }: Params) {
 
       {/* ── Lead paragraph ── */}
       {project.lead && (
-        <section className="pb-24 md:pb-32">
+        <section className="pb-20 md:pb-24">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <RevealOnScroll>
               <p
                 className="font-display font-bold text-fg"
                 style={{
-                  fontSize:      "clamp(1.5rem, 2.8vw, 2.5rem)",
-                  letterSpacing: "-0.02em",
-                  lineHeight:    1.2,
-                  maxWidth:      "30ch",
+                  fontSize:      "clamp(1.125rem, 1.55vw, 1.5rem)",
+                  letterSpacing: "-0.015em",
+                  lineHeight:    1.4,
+                  maxWidth:      "62ch",
                 }}
               >
                 {project.lead}
@@ -179,9 +179,62 @@ export default function ProjectPage({ params }: Params) {
         </section>
       )}
 
-      {/* ── Case-study sections ── */}
+      {/* ── Gallery ── */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="pb-20 md:pb-24">
+          <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+            <RevealOnScroll className="mb-10">
+              <span className="eyebrow accent-bar mb-4 block">Gallery</span>
+              <h2
+                className="font-display font-bold text-fg"
+                style={{
+                  fontSize:      "clamp(1.625rem, 2.6vw, 2.25rem)",
+                  letterSpacing: "-0.02em",
+                  lineHeight:    1.1,
+                }}
+              >
+                Selected renders.
+              </h2>
+            </RevealOnScroll>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+              {project.gallery.map((item, i) => (
+                <RevealOnScroll key={item.label} delay={i * 0.08}>
+                  {item.image ? (
+                    <figure className="flex flex-col gap-3">
+                      <div
+                        className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                        style={{ aspectRatio: item.aspectRatio }}
+                      >
+                        <Image
+                          src={item.image}
+                          alt={item.label}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          quality={90}
+                          className="object-cover object-center"
+                        />
+                      </div>
+                      <figcaption className="font-body text-[12px] font-medium uppercase tracking-[0.16em] text-fg/55">
+                        {item.label}
+                      </figcaption>
+                    </figure>
+                  ) : (
+                    <PlaceholderRender
+                      label={`[ ${item.label} ]`}
+                      aspectRatio={item.aspectRatio}
+                    />
+                  )}
+                </RevealOnScroll>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Case-study sections (sits between Gallery and Icons) ── */}
       {project.sections && project.sections.length > 0 && (
-        <section className="pb-20 pt-4 md:pb-24 md:pt-6">
+        <section className="py-20 md:py-24">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
             <div className="flex flex-col gap-10 md:gap-12">
               {project.sections.map((section, i) => (
@@ -194,7 +247,7 @@ export default function ProjectPage({ params }: Params) {
                       <h2
                         className="font-display font-bold text-fg"
                         style={{
-                          fontSize:      "clamp(1.5rem, 2.4vw, 2rem)",
+                          fontSize:      "clamp(1.25rem, 1.85vw, 1.625rem)",
                           letterSpacing: "-0.02em",
                           lineHeight:    1.1,
                         }}
@@ -207,9 +260,9 @@ export default function ProjectPage({ params }: Params) {
                     <p
                       className="font-body text-fg/85"
                       style={{
-                        fontSize:   "clamp(1.0625rem, 1.3vw, 1.25rem)",
+                        fontSize:   "clamp(0.9375rem, 1.1vw, 1.0625rem)",
                         lineHeight: 1.7,
-                        maxWidth:   "60ch",
+                        maxWidth:   "62ch",
                       }}
                     >
                       {section.body}
@@ -222,89 +275,50 @@ export default function ProjectPage({ params }: Params) {
         </section>
       )}
 
-      {/* ── Stats panel ── */}
-      {project.stats && project.stats.length > 0 && (
-        <section className="py-12 md:py-16">
+      {/* ── Icons sample ── */}
+      {project.icons && project.icons.length > 0 && (
+        <section className="pb-20 pt-4 md:pb-24 md:pt-6">
           <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-            <RevealOnScroll>
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
-                {project.stats.map((stat) => (
-                  <div key={stat.label} className="flex flex-col gap-2 bg-bg p-7 md:p-9">
-                    <span
-                      className="font-display font-bold text-fg"
-                      style={{
-                        fontSize:      "clamp(1.75rem, 3.2vw, 2.75rem)",
-                        letterSpacing: "-0.025em",
-                        lineHeight:    1.0,
-                      }}
-                    >
-                      {stat.value}
-                    </span>
-                    <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-fg/55">
-                      {stat.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <RevealOnScroll className="mb-10">
+              <span className="eyebrow accent-bar mb-4 block">Icons</span>
+              <h2
+                className="font-display font-bold text-fg"
+                style={{
+                  fontSize:      "clamp(1.625rem, 2.6vw, 2.25rem)",
+                  letterSpacing: "-0.02em",
+                  lineHeight:    1.1,
+                }}
+              >
+                A sample of the library.
+              </h2>
             </RevealOnScroll>
+
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-3">
+              {project.icons.map((icon, i) => (
+                <RevealOnScroll key={icon.name} delay={i * 0.04}>
+                  <figure className="flex flex-col gap-3">
+                    <div
+                      className="relative aspect-square w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                    >
+                      <Image
+                        src={icon.image}
+                        alt={icon.name}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 33vw"
+                        quality={90}
+                        className="object-contain object-center p-6 md:p-10"
+                      />
+                    </div>
+                    <figcaption className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-fg/55">
+                      {icon.name}
+                    </figcaption>
+                  </figure>
+                </RevealOnScroll>
+              ))}
+            </div>
           </div>
         </section>
       )}
-
-      {/* ── Gallery ── */}
-      <section className="pb-12 pt-24 md:pb-16 md:pt-32">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-          <RevealOnScroll className="mb-10">
-            <span className="eyebrow accent-bar mb-4 block">Gallery</span>
-            <h2
-              className="font-display font-bold text-fg"
-              style={{
-                fontSize:      "clamp(2rem, 3.5vw, 3rem)",
-                letterSpacing: "-0.02em",
-                lineHeight:    1.1,
-              }}
-            >
-              Selected renders.
-            </h2>
-          </RevealOnScroll>
-
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {(project.gallery ?? [
-              { label: `${project.title} — Render 01`, aspectRatio: "4/3" },
-              { label: `${project.title} — Render 02`, aspectRatio: "4/3" },
-              { label: `${project.title} — Render 03`, aspectRatio: "4/3" },
-            ]).map((item, i) => (
-              <RevealOnScroll key={item.label} delay={i * 0.08}>
-                {item.image ? (
-                  <figure className="flex flex-col gap-3">
-                    <div
-                      className="relative w-full overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
-                      style={{ aspectRatio: item.aspectRatio }}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={item.label}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        quality={90}
-                        className="object-cover object-center"
-                      />
-                    </div>
-                    <figcaption className="font-body text-[12px] font-medium uppercase tracking-[0.16em] text-fg/55">
-                      {item.label}
-                    </figcaption>
-                  </figure>
-                ) : (
-                  <PlaceholderRender
-                    label={`[ ${item.label} ]`}
-                    aspectRatio={item.aspectRatio}
-                  />
-                )}
-              </RevealOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── Credits ── */}
       {project.credits && project.credits.length > 0 && (

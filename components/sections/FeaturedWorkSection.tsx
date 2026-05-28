@@ -20,7 +20,7 @@ const featuredProjects: Project[] = [
     label:  "MeshKit",
     sub:    "3D Icon Library & Identity",
     tags:   "Identity · Icons · Motion",
-    image:  "/images/meshkit.png",
+    image:  "/images/meshkit/cover.png",
   },
 ];
 
