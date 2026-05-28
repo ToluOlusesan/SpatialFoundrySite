@@ -35,6 +35,11 @@ export interface ProjectLink {
   label: string;
 }
 
+export interface ProjectFilm {
+  src:    string;
+  poster?: string;
+}
+
 export interface Project {
   slug:        string;
   title:       string;
@@ -46,6 +51,7 @@ export interface Project {
 
   /* Case-study fields — optional; page falls back gracefully when absent */
   heroImage?:  string;
+  launchFilm?: ProjectFilm;
   website?:    ProjectLink;
   lead?:       string;
   sections?:   ProjectSection[];
@@ -66,6 +72,7 @@ export const projects: Project[] = [
     scope:       ["3D Modelling", "Icon System Design", "Launch Motion Film", "Web Illustrations"],
     year:        "2025",
     heroImage:   "/images/meshkit/cover.png",
+    launchFilm:  { src: "/videos/meshkitlaunchfilm.mp4", poster: "/images/meshkit/cover.png" },
     website:     { url: "https://meshkit.design", label: "meshkit.design" },
 
     lead:

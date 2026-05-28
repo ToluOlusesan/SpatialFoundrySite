@@ -73,6 +73,39 @@ export default function ProjectPage({ params }: Params) {
         </div>
       </section>
 
+      {/* ── Launch film ── */}
+      {project.launchFilm && (
+        <section className="px-6 pt-5 md:px-10 md:pt-6">
+          <div className="mx-auto max-w-[1400px]">
+            <RevealOnScroll>
+              <div className="mb-3 flex items-center gap-3">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-fg/65">
+                  Launch Film
+                </span>
+              </div>
+              <div
+                className="relative overflow-hidden rounded-2xl border border-fg/[0.06] bg-surface"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <video
+                  src={project.launchFilm.src}
+                  poster={project.launchFilm.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  aria-label={`${project.title} — Launch Film`}
+                />
+              </div>
+            </RevealOnScroll>
+          </div>
+        </section>
+      )}
+
       {/* ── Header: title + meta ── */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
