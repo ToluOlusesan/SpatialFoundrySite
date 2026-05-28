@@ -88,13 +88,6 @@ export const projects: Project[] = [
       },
     ],
 
-    stats: [
-      { value: "120+",            label: "Icons in the library"   },
-      { value: "4",               label: "Material variants each" },
-      { value: "60fps",           label: "Animation framerate"    },
-      { value: "GLB · PNG · MP4", label: "Delivery formats"       },
-    ],
-
     credits: [
       { role: "Creative Direction",    name: "Olusesan Tolu"          },
       { role: "3D Design & Animation", name: "Spatial Foundry"        },
