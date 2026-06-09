@@ -49,7 +49,7 @@ export function ComingSoonSection() {
 
   const fieldClass = [
     "w-full border-0 border-b border-white/[0.24] bg-transparent px-0 py-3",
-    "font-body text-[15px] text-white outline-none",
+    "font-body text-[17px] text-white outline-none",
     "placeholder:text-white/[0.46]",
     "transition-colors duration-200",
     "hover:border-white/[0.40]",
@@ -92,7 +92,7 @@ export function ComingSoonSection() {
           <p className="mt-12 font-body text-[12px] font-semibold uppercase tracking-[0.28em] text-white/[0.64]">
             Coming soon
           </p>
-          <p className="mt-5 max-w-[34rem] font-body text-base leading-7 text-white/[0.72] md:text-lg">
+          <p className="mt-5 max-w-[34rem] font-body text-lg leading-8 text-white/[0.72] md:text-xl">
             The studio is preparing a sharper home for our 3D brand systems,
             spatial campaigns, and motion work.
           </p>
@@ -121,7 +121,7 @@ export function ComingSoonSection() {
                       onClick={() => setCategory(option)}
                       aria-pressed={active}
                       className={[
-                        "min-h-9 rounded-full border px-4 py-1.5 font-body text-[13px] transition-colors duration-200",
+                        "min-h-9 rounded-full border px-4 py-1.5 font-body text-[14px] transition-colors duration-200",
                         "focus-visible:outline-2 focus-visible:outline-white/[0.70] focus-visible:outline-offset-2",
                         active
                           ? "border-white bg-white text-bg"
