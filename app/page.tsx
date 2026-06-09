@@ -4,6 +4,7 @@ import { FeaturedWorkSection } from "@/components/sections/FeaturedWorkSection";
 import { ApproachSection }     from "@/components/sections/ApproachSection";
 import { ProcessSection }      from "@/components/sections/ProcessSection";
 import { CTASection }          from "@/components/sections/CTASection";
+import { ComingSoonSection }   from "@/components/sections/ComingSoonSection";
 
 function Divider() {
   return (
@@ -14,6 +15,10 @@ function Divider() {
 }
 
 export default function HomePage() {
+  if (process.env.NEXT_PUBLIC_COMING_SOON !== "false") {
+    return <ComingSoonSection />;
+  }
+
   return (
     <>
       <HeroSection />

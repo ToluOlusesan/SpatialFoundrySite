@@ -26,6 +26,11 @@ export const metadata: Metadata = {
     description: "We give brands physical weight, spatial presence, and the kind of form that stops a scroll.",
     type:        "website",
   },
+  twitter: {
+    card:        "summary_large_image",
+    title:       "Spatial Foundry — 3D Branding Studio",
+    description: "We give brands physical weight, spatial presence, and the kind of form that stops a scroll.",
+  },
 };
 
 export default function RootLayout({
@@ -33,17 +38,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isComingSoon = process.env.NEXT_PUBLIC_COMING_SOON !== "false";
+
   return (
     <html lang="en" className={`${outfit.variable} ${workSans.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/32x32/favicon-orange.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/16x16/favicon-orange.png" />
         <meta name="theme-color" content="#0d0d0d" />
       </head>
       <body className="bg-bg text-fg font-body antialiased overflow-x-hidden">
-        <Navbar />
+        {!isComingSoon && <Navbar />}
         <main>{children}</main>
-        <Footer />
+        {!isComingSoon && <Footer />}
       </body>
     </html>
   );
