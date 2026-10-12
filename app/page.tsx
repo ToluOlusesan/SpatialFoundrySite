@@ -88,9 +88,10 @@ export default function HomePage() {
             <figure>
               <Link href="/projects/meshkit" className="sf-project-image sf-project-image-art" aria-label="View the MeshKit project">
                 <Image
-                  src="/images/meshkit/portfolio/0022.png"
+                  src="/images/meshkit/0018.png"
                   alt="A red microphone icon in a lilac 3D design scene"
                   fill
+                  unoptimized
                   sizes="(max-width: 720px) 100vw, 42vw"
                 />
               </Link>
@@ -102,6 +103,7 @@ export default function HomePage() {
                   src="/images/meshkit/portfolio/Home%20page.png"
                   alt="MeshKit icon library interface"
                   fill
+                  unoptimized
                   sizes="(max-width: 720px) 100vw, 58vw"
                 />
               </Link>
