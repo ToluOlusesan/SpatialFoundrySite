@@ -123,7 +123,6 @@ export const projects: Project[] = [
       { name: "Profile", image: `${meshkitImages}/profile.png` },
       { name: "Bar chart", image: `${meshkitImages}/Bar%20Chart.png` },
       { name: "Lock", image: `${meshkitImages}/Lock.png` },
-      { name: "Credit card", image: `${meshkitImages}/cc.png` },
       { name: "Folder", image: `${meshkitImages}/Folder.png` },
     ],
   },
