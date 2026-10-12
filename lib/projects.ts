@@ -91,10 +91,20 @@ export const projects: Project[] = [
     ],
     gallery: [
       {
-        title: "Microphone icon study",
+        title: "MeshKit customizer",
         aspectRatio: "16/9",
-        image: `${meshkitImages}/0022.png`,
+        image: "/images/meshkit/0197.png",
         featured: true,
+      },
+      {
+        title: "Icon library",
+        aspectRatio: "16/9",
+        image: "/images/meshkit/0055.png",
+      },
+      {
+        title: "Microphone study",
+        aspectRatio: "16/9",
+        image: "/images/meshkit/0018.png",
       },
       {
         title: "Customizer interface",
@@ -124,6 +134,9 @@ export const projects: Project[] = [
       { name: "Bar chart", image: `${meshkitImages}/Bar%20Chart.png` },
       { name: "Lock", image: `${meshkitImages}/Lock.png` },
       { name: "Folder", image: `${meshkitImages}/Folder.png` },
+      { name: "Eye", image: "/images/meshkit/icons/Eye_Open.png" },
+      { name: "Face ID", image: "/images/meshkit/icons/FaceId.png" },
+      { name: "Fingerprint", image: "/images/meshkit/icons/Fingerprint.png" },
     ],
   },
 ];

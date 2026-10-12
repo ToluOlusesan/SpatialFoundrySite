@@ -78,7 +78,7 @@ export default function ProjectPage({ params }: Params) {
               {project.gallery.map((item) => item.image && (
                 <figure className={item.featured ? "sf-case-gallery-featured" : ""} key={item.title}>
                   <div className="sf-case-gallery-image" style={{ aspectRatio: item.aspectRatio }}>
-                    <Image src={item.image} alt={item.title} fill sizes={item.featured ? "100vw" : "(max-width: 720px) 100vw, 50vw"} />
+                    <Image src={item.image} alt={item.title} fill unoptimized sizes={item.featured ? "100vw" : "(max-width: 720px) 100vw, 50vw"} />
                   </div>
                   <figcaption>{item.title}</figcaption>
                 </figure>
@@ -106,7 +106,7 @@ export default function ProjectPage({ params }: Params) {
             <div className="sf-case-icon-grid">
               {project.icons.map((icon) => (
                 <figure key={icon.name}>
-                  <div><Image src={icon.image} alt={icon.name} fill sizes="(max-width: 720px) 50vw, 25vw" /></div>
+                  <div><Image src={icon.image} alt={icon.name} fill unoptimized sizes="(max-width: 720px) 50vw, 33vw" /></div>
                   <figcaption>{icon.name}</figcaption>
                 </figure>
               ))}
