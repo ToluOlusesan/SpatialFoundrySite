@@ -49,7 +49,7 @@ export default function HomePage() {
       </header>
 
       <main>
-        <section className="sf-hero sf-shell" aria-label="Spatial Foundry studio">
+        <section className="sf-hero" aria-label="Spatial Foundry studio">
           <Image
             src="/images/hero.png"
             alt="Rendered studio workspace with a design board, desk and chair"
