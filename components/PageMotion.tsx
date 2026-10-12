@@ -18,14 +18,48 @@ export default function PageMotion() {
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const squares = hero ? Array.from(hero.querySelectorAll<HTMLElement>(".sf-hero-square")) : [];
+    const squareField = hero?.querySelector<HTMLElement>(".sf-hero-squares");
     const revealTargets = Array.from(root.querySelectorAll<HTMLElement>("[data-sf-reveal]"));
     let heroInView = false;
     const lastPositions = squareZones.map(() => -1);
     let frame = 0;
+    const revealTimers: number[] = [];
+
+    const typeHeading = (heading: HTMLElement) => {
+      if (reducedMotion.matches) return;
+      const characters = Array.from(heading.querySelectorAll<HTMLElement>(".sf-type-char"));
+      let characterIndex = 0;
+
+      const revealNext = () => {
+        const character = characters[characterIndex++];
+        if (!character) return;
+        character.classList.add("is-revealing");
+        revealTimers.push(window.setTimeout(() => character.classList.add("is-revealed"), 48));
+        revealTimers.push(window.setTimeout(() => character.classList.remove("is-revealing"), 150));
+        revealTimers.push(window.setTimeout(revealNext, 31));
+      };
+
+      revealNext();
+    };
 
     const updateHeader = () => {
       if (!hero || !header) return;
-      header.classList.toggle("is-scrolled", hero.getBoundingClientRect().bottom <= header.offsetHeight);
+      const headerHeight = header.offsetHeight;
+      const heroRect = hero.getBoundingClientRect();
+      const rawProgress = -heroRect.top / Math.max(1, heroRect.height - headerHeight);
+      const progress = reducedMotion.matches
+        ? Number(heroRect.bottom <= headerHeight)
+        : Math.min(1, Math.max(0, rawProgress));
+      const passing = Math.sin(progress * Math.PI);
+      const squareFade = 1 - Math.min(1, Math.max(0, -heroRect.top / 320));
+
+      if (squareField) squareField.style.opacity = squareFade.toFixed(3);
+      header.style.setProperty("--sf-paper", progress.toFixed(3));
+      header.style.setProperty("--sf-backdrop-blur", `${(8 * progress).toFixed(2)}px`);
+      header.style.setProperty("--sf-nav-blur", `${(1.25 * passing).toFixed(2)}px`);
+      header.style.setProperty("--sf-nav-opacity", (1 - 0.1 * passing).toFixed(3));
+      header.style.setProperty("--sf-nav-shift", `${(2 * passing).toFixed(2)}px`);
+      header.classList.toggle("is-scrolled", progress === 1);
     };
 
     const onScroll = () => {
@@ -54,7 +88,9 @@ export default function PageMotion() {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        (entry.target as HTMLElement).dataset.sfVisible = "true";
+        const target = entry.target as HTMLElement;
+        target.dataset.sfVisible = "true";
+        if (target.dataset.sfReveal === "heading") typeHeading(target);
         observer.unobserve(entry.target);
       });
     }, { rootMargin: "0px 0px -9% 0px", threshold: 0.05 });
@@ -74,6 +110,7 @@ export default function PageMotion() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(frame);
+      revealTimers.forEach(window.clearTimeout);
       heroObserver?.disconnect();
       revealObserver.disconnect();
       delete root.dataset.sfMotionReady;

@@ -60,9 +60,6 @@ export default function HomePage() {
             className="sf-hero-image"
             sizes="100vw"
           />
-          <div className="sf-hero-wordmark" aria-hidden="true">
-            <Image src="/logo/wordmark/wordmark.svg" alt="" width={1024} height={490} priority />
-          </div>
           <div className="sf-hero-squares" aria-hidden="true">
             <span className="sf-hero-square" /><span className="sf-hero-square" />
             <span className="sf-hero-square" /><span className="sf-hero-square" />
@@ -72,7 +69,7 @@ export default function HomePage() {
         <section className="sf-intro sf-shell" aria-labelledby="hero-title">
           <div className="sf-section-label"><span>Creative technology studio</span></div>
           <div className="sf-intro-content">
-            <h1 id="hero-title" data-sf-reveal="heading"><HeadingReveal>We turn ambitious ideas into visual stories, digital experiences and the tools to bring them to life.</HeadingReveal></h1>
+            <h1 id="hero-title" data-sf-reveal="heading"><HeadingReveal>At Spatial Foundry, we turn ambitious ideas into visual stories, digital experiences and the tools to bring them to life.</HeadingReveal></h1>
             <a href="#project" className="sf-hero-link" data-sf-reveal="fade">
               Selected work <span aria-hidden="true">↓</span>
             </a>
