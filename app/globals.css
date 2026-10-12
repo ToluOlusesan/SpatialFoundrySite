@@ -157,6 +157,7 @@ a { color: inherit; text-decoration: none; }
 
 .sf-case { --ink: #121212; --muted: #606060; --rule: #d9d9d9; --orange: #ff2b00; min-height: 100vh; background: #fff; color: var(--ink); font-family: var(--font-inter), Arial, sans-serif; }
 .sf-case h1, .sf-case h2, .sf-case h3 { font-family: var(--font-outfit), sans-serif; }
+.sf-case .sf-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .sf-case a:focus-visible { outline: 2px solid var(--orange); outline-offset: 5px; }
 .sf-case-back { display: inline-flex; align-items: center; gap: 11px; font-size: 14px; }
 .sf-case-back:hover, .sf-case-footer-link:hover { color: var(--orange); }
@@ -200,6 +201,8 @@ a { color: inherit; text-decoration: none; }
   .sf-case-intro h1 { font-size: clamp(76px, 11vw, 110px); }
 }
 @media (max-width: 720px) {
+  .sf-case .sf-header { min-height: 82px; }
+  .sf-case .sf-brand { width: 124px; }
   .sf-case-back { font-size: 12px; }
   .sf-case-intro { padding-top: 35px; padding-bottom: 55px; }
   .sf-case-intro h1 { margin-top: 58px; font-size: clamp(75px, 17vw, 110px); }
