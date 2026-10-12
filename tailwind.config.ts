@@ -18,7 +18,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-outfit)", "sans-serif"],
-        body:    ["var(--font-work-sans)", "sans-serif"],
+        body:    ["var(--font-inter)", "sans-serif"],
       },
       letterSpacing: {
         tighter: "-0.03em",
@@ -45,3 +45,5 @@ const config: Config = {
 };
 
 export default config;
+
+

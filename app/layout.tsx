@@ -1,35 +1,42 @@
 import type { Metadata } from "next";
-import { Outfit, Work_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
 
-const outfit = Outfit({
-  subsets:  ["latin"],
+const outfit = localFont({
+  src: "../public/fonts/Outfit-VariableFont_wght.ttf",
   variable: "--font-outfit",
-  weight:   ["700", "800", "900"],
-  display:  "swap",
+  weight: "100 900",
+  display: "swap",
 });
 
-const workSans = Work_Sans({
-  subsets:  ["latin"],
-  variable: "--font-work-sans",
-  weight:   ["300", "400", "500", "600"],
-  display:  "swap",
+const inter = localFont({
+  src: [
+    { path: "../public/fonts/Inter-Regular.ttf", weight: "400", style: "normal" },
+    { path: "../public/fonts/Inter-Medium.ttf", weight: "500", style: "normal" },
+    { path: "../public/fonts/Inter-SemiBold.ttf", weight: "600", style: "normal" },
+  ],
+  variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title:       "Spatial Foundry — 3D Branding Studio",
-  description: "Spatial Foundry is a 3D branding studio that builds tangible, spatial identities for international brands. Based in Lagos. Built for the world.",
+  metadataBase: new URL("https://spatialfoundry.com"),
+  title: "Spatial Foundry — Creative Technology Studio",
+  description:
+    "Spatial Foundry is an independent creative technology studio making tools, identities and experiences at the meeting point of design and technology.",
   openGraph: {
-    title:       "Spatial Foundry — 3D Branding Studio",
-    description: "We give brands physical weight, spatial presence, and the kind of form that stops a scroll.",
-    type:        "website",
+    title: "Spatial Foundry — Creative Technology Studio",
+    description:
+      "We make tools, identities and experiences at the meeting point of design and technology.",
+    type: "website",
+    images: ["/images/meshkit/portfolio/0022.webp"],
   },
   twitter: {
-    card:        "summary_large_image",
-    title:       "Spatial Foundry — 3D Branding Studio",
-    description: "We give brands physical weight, spatial presence, and the kind of form that stops a scroll.",
+    card: "summary_large_image",
+    images: ["/images/meshkit/portfolio/0022.webp"],
+    title: "Spatial Foundry — Creative Technology Studio",
+    description:
+      "We make tools, identities and experiences at the meeting point of design and technology.",
   },
 };
 
@@ -38,18 +45,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isComingSoon = process.env.NEXT_PUBLIC_COMING_SOON !== "false";
-
   return (
-    <html lang="en" className={`${outfit.variable} ${workSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={outfit.variable + " " + inter.variable}>
       <head>
-        <meta name="theme-color" content="#0d0d0d" />
+        <meta name="theme-color" content="#f6f4ef" />
       </head>
-      <body className="bg-bg text-fg font-body antialiased overflow-x-hidden">
-        {!isComingSoon && <Navbar />}
-        <main>{children}</main>
-        {!isComingSoon && <Footer />}
-      </body>
+      <body className="min-h-screen bg-bg text-fg font-body antialiased overflow-x-hidden">{children}</body>
     </html>
   );
 }
