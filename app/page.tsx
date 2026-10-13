@@ -60,6 +60,9 @@ export default function HomePage() {
             className="sf-hero-image"
             sizes="100vw"
           />
+          <div className="sf-hero-wordmark" aria-hidden="true">
+            <Image src="/logo/wordmark/wordmark.svg" alt="" width={1024} height={490} priority />
+          </div>
           <div className="sf-hero-squares" aria-hidden="true">
             <span className="sf-hero-square" /><span className="sf-hero-square" />
             <span className="sf-hero-square" /><span className="sf-hero-square" />
