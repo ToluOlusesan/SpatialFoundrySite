@@ -27,14 +27,17 @@ export function generateStaticParams() {
 export default function ProjectPage({ params }: Params) {
   const project = getProject(params.slug);
   if (!project) notFound();
+  const caseClassName = project.slug === "utribe" ? "sf-case sf-case-utribe" : "sf-case";
 
   return (
-    <div className="sf-case">
-      <header className="sf-header sf-shell">
-        <Link href="/" className="sf-brand" aria-label="Spatial Foundry home">
-          <Image src="/logo/logo-wordmark-combination/combination.svg" alt="Spatial Foundry" width={1025} height={296} priority />
-        </Link>
-        <Link href="/#project" className="sf-case-back"><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /> Back to work</Link>
+    <div className={caseClassName}>
+      <header className="sf-header">
+        <div className="sf-header-inner sf-shell">
+          <Link href="/" className="sf-brand" aria-label="Spatial Foundry home">
+            <Image src="/logo/logo-wordmark-combination/combination.svg" alt="Spatial Foundry" width={1025} height={296} priority />
+          </Link>
+          <Link href="/#project" className="sf-case-back"><ArrowLeft size={16} strokeWidth={1.5} aria-hidden="true" /> Back to work</Link>
+        </div>
       </header>
 
       <main>
@@ -52,9 +55,9 @@ export default function ProjectPage({ params }: Params) {
         </section>
 
         {project.launchFilm && (
-          <figure className="sf-case-film sf-shell" data-sf-reveal="fade">
+          <figure className={`sf-case-film sf-shell${project.slug === "utribe" ? " sf-case-film-bleed" : ""}`} data-sf-reveal="fade">
             <video src={project.launchFilm.src} poster={project.launchFilm.poster} controls playsInline preload="metadata" aria-label={project.title + " launch film"} />
-            <figcaption>Launch film / MeshKit</figcaption>
+            <figcaption>{project.launchFilm.caption ?? `Launch film / ${project.title}`}</figcaption>
           </figure>
         )}
 
@@ -65,6 +68,8 @@ export default function ProjectPage({ params }: Params) {
             <div className="sf-case-facts" data-sf-reveal="fade">
               <p>{project.description}</p>
               <dl>
+                {project.client && <div><dt>Client</dt><dd>{project.client}</dd></div>}
+                {project.collaboration && <div><dt>With</dt><dd>{project.collaboration.replace("Created with ", "")}</dd></div>}
                 <div><dt>Scope</dt><dd>{project.scope.join(", ")}</dd></div>
                 {project.tools && <div><dt>Tools</dt><dd>{project.tools.join(", ")}</dd></div>}
               </dl>
@@ -75,12 +80,32 @@ export default function ProjectPage({ params }: Params) {
         {project.gallery && project.gallery.length > 0 && (
           <section className="sf-case-gallery sf-shell" aria-labelledby="gallery-title">
             <div className="sf-section-label"><span>03 / Gallery</span><span>Selected work</span></div>
-            <h2 id="gallery-title" data-sf-reveal="heading"><HeadingReveal>MeshKit in detail</HeadingReveal></h2>
+            <h2 id="gallery-title" data-sf-reveal="heading"><HeadingReveal>{project.galleryTitle ?? `${project.title} in detail`}</HeadingReveal></h2>
             <div className="sf-case-gallery-grid">
-              {project.gallery.map((item) => item.image && (
-                <figure className={item.featured ? "sf-case-gallery-featured" : ""} key={item.title} data-sf-reveal="fade">
+              {project.gallery.map((item, index) => item.image && (
+                <figure className={[item.featured && "sf-case-gallery-featured", project.slug === "utribe" && `sf-case-gallery-item-${index}`].filter(Boolean).join(" ")} key={item.title} data-sf-reveal="fade">
                   <div className="sf-case-gallery-image" style={{ aspectRatio: item.aspectRatio }}>
-                    <Image src={item.image} alt={item.title} fill unoptimized sizes={item.featured ? "100vw" : "(max-width: 720px) 100vw, 50vw"} />
+                    <Image src={item.image} alt={item.title} fill unoptimized={project.slug !== "utribe"} sizes={item.featured ? "100vw" : "(max-width: 720px) 100vw, 50vw"} />
+                  </div>
+                  <figcaption>{item.title}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {project.materials && project.materials.length > 0 && (
+          <section className="sf-case-materials sf-shell" aria-labelledby="materials-title">
+            <div className="sf-section-label"><span>04 / Material studies</span><span>3D explorations</span></div>
+            <div className="sf-case-materials-intro">
+              <h2 id="materials-title" data-sf-reveal="heading"><HeadingReveal>Material, shaped by light.</HeadingReveal></h2>
+              {project.materialsNote && <p data-sf-reveal="fade">{project.materialsNote}</p>}
+            </div>
+            <div className="sf-case-materials-grid">
+              {project.materials.map((item) => item.image && (
+                <figure key={item.title} data-sf-reveal="fade">
+                  <div className="sf-case-material-image" style={{ aspectRatio: item.aspectRatio }}>
+                    <Image src={item.image} alt={item.title} fill unoptimized={project.slug !== "utribe"} sizes="(max-width: 720px) 50vw, 25vw" />
                   </div>
                   <figcaption>{item.title}</figcaption>
                 </figure>
@@ -90,15 +115,22 @@ export default function ProjectPage({ params }: Params) {
         )}
 
         {project.sections && project.sections.length > 0 && (
-          <section className="sf-case-story sf-shell" aria-labelledby="story-title">
-            <div className="sf-section-label"><span>04 / Approach</span><span>Behind the work</span></div>
+          <section className="sf-case-story sf-shell" aria-label="Approach and visual direction">
+            <div className="sf-section-label"><span>{project.materials ? "05" : "04"} / Approach</span><span>Behind the work</span></div>
             {project.sections.map((section) => (
               <div className="sf-case-story-row" key={section.title}>
-                <h2 id="story-title" data-sf-reveal="heading"><HeadingReveal>{section.title}</HeadingReveal></h2>
+                <h2 id={`story-${section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} data-sf-reveal="heading"><HeadingReveal>{section.title}</HeadingReveal></h2>
                 <p data-sf-reveal="fade">{section.body}</p>
               </div>
             ))}
           </section>
+        )}
+
+        {project.supportingFilm && (
+          <figure className={`sf-case-film sf-shell${project.slug === "utribe" ? " sf-case-film-bleed" : ""} sf-case-film-supporting`} data-sf-reveal="fade">
+            <video src={project.supportingFilm.src} poster={project.supportingFilm.poster} controls playsInline preload="none" aria-label={`${project.title} ${project.supportingFilm.caption ?? "supporting film"}`} />
+            <figcaption>{project.supportingFilm.caption ?? `${project.title} / Motion study`}</figcaption>
+          </figure>
         )}
 
         {project.icons && project.icons.length > 0 && (

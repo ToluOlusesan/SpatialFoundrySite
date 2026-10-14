@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  if (pathname === "/" || pathname === "/projects/meshkit") {
+  if (pathname === "/" || pathname === "/projects/meshkit" || pathname === "/projects/utribe") {
     return NextResponse.next();
   }
 

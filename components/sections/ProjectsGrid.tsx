@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/projects";
@@ -18,18 +19,28 @@ export function ProjectsGrid() {
               className="relative overflow-hidden rounded-2xl bg-surface"
               style={{ aspectRatio: "16/9" }}
             >
-              {/* Atmosphere */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 50% 35%, rgb(var(--fg) / 0.04) 0%, transparent 65%)",
-                }}
-              />
+              {project.heroImage ? (
+                <Image
+                  src={project.heroImage}
+                  alt={`${project.title} project visual`}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at 50% 35%, rgb(var(--fg) / 0.04) 0%, transparent 65%)",
+                  }}
+                />
+              )}
 
               {/* Animated placeholder label */}
-              <motion.div
+              {!project.heroImage && <motion.div
                 className="absolute inset-0 flex items-center justify-center"
                 animate={{ opacity: [0.2, 0.45, 0.2] }}
                 transition={{ duration: 3.5 + i * 0.3, repeat: Infinity, ease: "easeInOut" }}
@@ -37,7 +48,7 @@ export function ProjectsGrid() {
                 <span className="text-center font-body text-[10px] uppercase tracking-[0.2em] text-fg/60">
                   [ {project.title} — {project.subtitle} ]
                 </span>
-              </motion.div>
+              </motion.div>}
 
               {/* Hover arrow — fg circle */}
               <div className="absolute right-4 top-4 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

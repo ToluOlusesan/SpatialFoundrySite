@@ -119,8 +119,47 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="sf-project sf-shell sf-project-utribe" id="utribe" aria-labelledby="utribe-title">
+          <div className="sf-section-label"><span>02 / Work</span><span>Ubuntu Tribe · 2026</span></div>
+          <div className="sf-project-heading">
+            <h2 id="utribe-title" data-sf-reveal="heading"><HeadingReveal>UTribe</HeadingReveal></h2>
+            <p data-sf-reveal="fade">
+              3D motion and art direction for a digital wealth platform focused on making gold-backed assets more accessible.
+            </p>
+          </div>
+          <div className="sf-project-images" data-sf-reveal="fade">
+            <figure>
+              <Link href="/projects/utribe" className="sf-project-image sf-project-image-art" aria-label="Explore the UTribe project">
+                <Image
+                  src="/images/utribe/Laptop_0138.png"
+                  alt="UTribe digital wealth platform shown on a laptop"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 720px) 100vw, 62vw"
+                />
+              </Link>
+              <figcaption>Digital product</figcaption>
+            </figure>
+            <figure>
+              <Link href="/projects/utribe" className="sf-project-image sf-project-image-ui" aria-label="Explore the UTribe project">
+                <Image
+                  src="/images/utribe/Coin.png"
+                  alt="UTribe coin visual, rendered in blue light"
+                  fill
+                  unoptimized
+                  sizes="(max-width: 720px) 100vw, 38vw"
+                />
+              </Link>
+              <figcaption>3D visual language</figcaption>
+            </figure>
+          </div>
+          <div className="sf-project-footer">
+            <Link href="/projects/utribe">Explore the project <ArrowUpRight size={17} strokeWidth={1.5} aria-hidden="true" /></Link>
+          </div>
+        </section>
+
         <section className="sf-practice sf-shell" id="practice" aria-labelledby="practice-title">
-          <div className="sf-section-label"><span>02 / Practice</span></div>
+          <div className="sf-section-label"><span>03 / Practice</span></div>
           <div className="sf-practice-intro">
             <h2 id="practice-title" data-sf-reveal="heading"><HeadingReveal>Across disciplines,<br />from the start.</HeadingReveal></h2>
             <p data-sf-reveal="fade">
@@ -143,7 +182,7 @@ export default function HomePage() {
 
         <section className="sf-philosophy" id="philosophy" aria-labelledby="philosophy-title">
           <div className="sf-shell">
-            <div className="sf-section-label"><span>03 / Philosophy</span></div>
+            <div className="sf-section-label"><span>04 / Philosophy</span></div>
             <div className="sf-philosophy-content">
               <h2 id="philosophy-title" data-sf-reveal="heading"><HeadingReveal>We make ideas real. We make the process better.</HeadingReveal></h2>
               <p data-sf-reveal="fade">
@@ -154,7 +193,7 @@ export default function HomePage() {
         </section>
 
         <section className="sf-contact sf-shell" id="contact" aria-labelledby="contact-title">
-          <div className="sf-section-label"><span>04 / Contact</span></div>
+          <div className="sf-section-label"><span>05 / Contact</span></div>
           <div className="sf-contact-content">
             <h2 id="contact-title" data-sf-reveal="heading"><HeadingReveal>Tell us what you’re making.</HeadingReveal></h2>
             <a href="mailto:spatialfoundry@gmail.com" data-sf-reveal="fade">
