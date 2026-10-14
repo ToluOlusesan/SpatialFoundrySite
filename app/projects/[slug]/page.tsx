@@ -84,7 +84,7 @@ export default function ProjectPage({ params }: Params) {
             <div className="sf-case-gallery-grid">
               {project.gallery.map((item, index) => item.image && (
                 <figure className={[item.featured && "sf-case-gallery-featured", project.slug === "utribe" && `sf-case-gallery-item-${index}`].filter(Boolean).join(" ")} key={item.title} data-sf-reveal="fade">
-                  <div className="sf-case-gallery-image" style={{ aspectRatio: item.aspectRatio }}>
+                  <div className="sf-case-gallery-image" style={{ aspectRatio: project.slug === "utribe" && !item.featured ? "1 / 1" : item.aspectRatio }}>
                     <Image src={item.image} alt={item.title} fill unoptimized={project.slug !== "utribe"} sizes={item.featured ? "100vw" : "(max-width: 720px) 100vw, 50vw"} />
                   </div>
                   <figcaption>{item.title}</figcaption>
