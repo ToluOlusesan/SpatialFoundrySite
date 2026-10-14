@@ -90,11 +90,6 @@ export const projects: Project[] = [
       poster: "/images/utribe/0312.webp",
       caption: "Landing page motion",
     },
-    supportingFilm: {
-      src: "/videos/utribe/logo-animation.mp4",
-      poster: "/images/utribe/0135.png",
-      caption: "Logo animation",
-    },
     lead: "A moving visual language for a new way to experience digital gold.",
     galleryTitle: "Inside the visual world",
     materialsNote:
