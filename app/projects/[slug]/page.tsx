@@ -105,7 +105,7 @@ export default function ProjectPage({ params }: Params) {
               {project.materials.map((item) => item.image && (
                 <figure key={item.title} data-sf-reveal="fade">
                   <div className="sf-case-material-image" style={{ aspectRatio: item.aspectRatio }}>
-                    <Image src={item.image} alt={item.title} fill unoptimized={project.slug !== "utribe"} sizes="(max-width: 720px) 50vw, 25vw" />
+                    <Image src={item.image} alt={item.title} fill unoptimized={project.slug === "utribe"} sizes="(max-width: 720px) 100vw, 50vw" />
                   </div>
                   <figcaption>{item.title}</figcaption>
                 </figure>
@@ -114,9 +114,37 @@ export default function ProjectPage({ params }: Params) {
           </section>
         )}
 
+        {(project.research?.length || project.researchFilm) && (
+          <section className="sf-case-research sf-shell" aria-labelledby="research-title">
+            <div className="sf-section-label"><span>05 / R&amp;D</span><span>Visual exploration</span></div>
+            <div className="sf-case-research-intro">
+              <h2 id="research-title" data-sf-reveal="heading"><HeadingReveal>From material to mark.</HeadingReveal></h2>
+              {project.researchNote && <p data-sf-reveal="fade">{project.researchNote}</p>}
+            </div>
+            {project.researchFilm && (
+              <figure className="sf-case-research-film sf-case-film" data-sf-reveal="fade">
+                <video src={project.researchFilm.src} controls playsInline preload="none" aria-label={`${project.title} ${project.researchFilm.caption ?? "R&D film"}`} />
+                <figcaption>{project.researchFilm.caption ?? `${project.title} / R&D film`}</figcaption>
+              </figure>
+            )}
+            {project.research && project.research.length > 0 && (
+              <div className="sf-case-research-grid">
+                {project.research.map((item) => item.image && (
+                  <figure key={item.title} data-sf-reveal="fade">
+                    <div className="sf-case-research-image" style={{ aspectRatio: item.aspectRatio }}>
+                      <Image src={item.image} alt={item.title} fill unoptimized={project.slug !== "utribe"} sizes="(max-width: 720px) 100vw, 50vw" />
+                    </div>
+                    <figcaption>{item.title}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
         {project.sections && project.sections.length > 0 && (
           <section className="sf-case-story sf-shell" aria-label="Approach and visual direction">
-            <div className="sf-section-label"><span>{project.materials ? "05" : "04"} / Approach</span><span>Behind the work</span></div>
+            <div className="sf-section-label"><span>{project.research ? "06" : project.materials ? "05" : "04"} / Approach</span><span>Behind the work</span></div>
             {project.sections.map((section) => (
               <div className="sf-case-story-row" key={section.title}>
                 <h2 id={`story-${section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`} data-sf-reveal="heading"><HeadingReveal>{section.title}</HeadingReveal></h2>
@@ -124,13 +152,6 @@ export default function ProjectPage({ params }: Params) {
               </div>
             ))}
           </section>
-        )}
-
-        {project.supportingFilm && (
-          <figure className={`sf-case-film sf-shell${project.slug === "utribe" ? " sf-case-film-bleed" : ""} sf-case-film-supporting`} data-sf-reveal="fade">
-            <video src={project.supportingFilm.src} poster={project.supportingFilm.poster} controls playsInline preload="none" aria-label={`${project.title} ${project.supportingFilm.caption ?? "supporting film"}`} />
-            <figcaption>{project.supportingFilm.caption ?? `${project.title} / Motion study`}</figcaption>
-          </figure>
         )}
 
         {project.icons && project.icons.length > 0 && (

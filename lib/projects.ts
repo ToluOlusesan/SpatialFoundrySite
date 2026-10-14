@@ -55,7 +55,7 @@ export interface Project {
   client?: string;
   collaboration?: string;
   launchFilm?: ProjectFilm;
-  supportingFilm?: ProjectFilm;
+  researchFilm?: ProjectFilm;
   website?: ProjectLink;
   lead?: string;
   galleryTitle?: string;
@@ -66,6 +66,8 @@ export interface Project {
   gallery?: ProjectGalleryItem[];
   materials?: ProjectGalleryItem[];
   materialsNote?: string;
+  research?: ProjectGalleryItem[];
+  researchNote?: string;
   icons?: ProjectIcon[];
 }
 
@@ -93,7 +95,7 @@ export const projects: Project[] = [
     lead: "A moving visual language for a new way to experience digital gold.",
     galleryTitle: "Inside the visual world",
     materialsNote:
-      "These backgrounds were created entirely in 3D, exploring the textures and material qualities of precious metals and stones found across Africa.",
+      "Created entirely in 3D, these studies explore mineral textures from across Africa alongside reflective metal and brushed finishes.",
     sections: [
       {
         title: "A visual language in motion",
@@ -139,6 +141,19 @@ export const projects: Project[] = [
       { title: "Sapphire", aspectRatio: "1/1", image: "/images/utribe/Sapphire.png" },
       { title: "Platinum", aspectRatio: "1/1", image: "/images/utribe/Platinum.png" },
       { title: "Fluorite", aspectRatio: "1/1", image: "/images/utribe/Flourite.png" },
+      { title: "Malachite", aspectRatio: "1/1", image: "/images/utribe/Malachite.png" },
+      { title: "Brushed metal", aspectRatio: "1/1", image: "/images/utribe/Brushed.png" },
+    ],
+    researchFilm: {
+      src: "/videos/utribe/approved-logo.mp4",
+      poster: "/images/utribe/rnd-mineral-form.png",
+      caption: "Approved logo animation",
+    },
+    researchNote:
+      "Studies in reflective mineral form, digital detail, and the approved mark in motion.",
+    research: [
+      { title: "Reflective mineral form", aspectRatio: "16/9", image: "/images/utribe/rnd-mineral-form.png" },
+      { title: "Digital detail in the material", aspectRatio: "16/9", image: "/images/utribe/rnd-digital-material.png" },
     ],
   },
   {
