@@ -48,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.variable + " " + inter.variable}>
       <head>
-        <meta name="theme-color" content="#f6f4ef" />
+        <meta name="theme-color" content="#ffffff" />
       </head>
       <body className="min-h-screen bg-bg text-fg font-body antialiased overflow-x-hidden">{children}</body>
     </html>

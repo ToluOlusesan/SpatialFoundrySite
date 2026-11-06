@@ -166,7 +166,7 @@ export const projects: Project[] = [
     scope: ["3D Identity System", "Icon Design", "3D Animation"],
     tools: ["Blender", "After Effects", "Figma", "Cycles"],
     year: "2026",
-    heroImage: "/images/meshkit/0022.webp",
+    heroImage: "/images/meshkit/portfolio/0022.webp",
     launchFilm: {
       src: "/videos/Meshkit-web.mp4",
       poster: "/images/meshkit/film-poster.jpg",

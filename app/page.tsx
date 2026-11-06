@@ -30,6 +30,7 @@ const practice = [
 export default function HomePage() {
   return (
     <div className="sf-home" id="top">
+      <a href="#main" className="sf-skip">Skip to content</a>
       <header className="sf-header">
         <div className="sf-header-inner sf-shell">
         <Link href="/" className="sf-brand" aria-label="Spatial Foundry home">
@@ -50,7 +51,7 @@ export default function HomePage() {
       </div>
       </header>
 
-      <main>
+      <main id="main">
         <section className="sf-hero" aria-label="Spatial Foundry studio">
           <Image
             src="/images/hero.png"
@@ -72,7 +73,7 @@ export default function HomePage() {
         <section className="sf-intro sf-shell" aria-labelledby="hero-title">
           <div className="sf-section-label"><span>Creative technology studio</span></div>
           <div className="sf-intro-content">
-            <h1 id="hero-title" data-sf-reveal="heading"><HeadingReveal>At Spatial Foundry, we turn ambitious ideas into visual stories, digital experiences and the tools to bring them to life.</HeadingReveal></h1>
+            <h1 id="hero-title" data-sf-reveal="heading"><HeadingReveal>At Spatial Foundry, we turn ambitious ideas into visual stories and digital experiences, and create tools that bring them to life.</HeadingReveal></h1>
             <a href="#project" className="sf-hero-link" data-sf-reveal="fade">
               Selected work <span aria-hidden="true">↓</span>
             </a>
@@ -95,8 +96,8 @@ export default function HomePage() {
                   src="/images/meshkit/0018.png"
                   alt="A red microphone icon in a lilac 3D design scene"
                   fill
-                  unoptimized
-                  sizes="(max-width: 720px) 100vw, 42vw"
+                  quality={90}
+                  sizes="(max-width: 720px) 100vw, 640px"
                 />
               </Link>
               <figcaption>Icon study</figcaption>
@@ -107,8 +108,8 @@ export default function HomePage() {
                   src="/images/meshkit/portfolio/Home%20page.png"
                   alt="MeshKit icon library interface"
                   fill
-                  unoptimized
-                  sizes="(max-width: 720px) 100vw, 58vw"
+                  quality={90}
+                  sizes="(max-width: 720px) 100vw, 880px"
                 />
               </Link>
               <figcaption>Product library</figcaption>
@@ -134,8 +135,8 @@ export default function HomePage() {
                   src="/images/utribe/Laptop_0138.png"
                   alt="UTribe digital wealth platform shown on a laptop"
                   fill
-                  unoptimized
-                  sizes="(max-width: 720px) 100vw, 62vw"
+                  quality={90}
+                  sizes="(max-width: 720px) 100vw, 940px"
                 />
               </Link>
               <figcaption>Digital product</figcaption>
@@ -146,8 +147,8 @@ export default function HomePage() {
                   src="/images/utribe/Coin.png"
                   alt="UTribe coin visual, rendered in blue light"
                   fill
-                  unoptimized
-                  sizes="(max-width: 720px) 100vw, 38vw"
+                  quality={90}
+                  sizes="(max-width: 720px) 100vw, 580px"
                 />
               </Link>
               <figcaption>3D visual language</figcaption>
@@ -168,8 +169,8 @@ export default function HomePage() {
             </p>
           </div>
           <div className="sf-practice-grid">
-            {practice.map((item) => (
-              <div className="sf-practice-item" key={item.number} data-sf-reveal="fade">
+            {practice.map((item, index) => (
+              <div className="sf-practice-item" key={item.number} data-sf-reveal="fade" style={{ "--sf-delay": `${(index % 2) * 90}ms` } as React.CSSProperties}>
                 <span>{item.number}</span>
                 <div>
                   <h3>{item.title}</h3>
